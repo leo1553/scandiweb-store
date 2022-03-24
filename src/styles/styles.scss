@@ -1,0 +1,17 @@
+@import "./variables.scss";
+
+@mixin font() {
+  font-family: "Raleway", sans-serif;
+  font-weight: normal;
+}
+
+*,
+*::before,
+*::after {
+  @include font();
+  color: $foreground-color;
+}
+
+*::placeholder {
+  @include font();
+}

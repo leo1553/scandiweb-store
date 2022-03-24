@@ -36,6 +36,10 @@
         "comma-dangle": [
             "error",
             "never"
+        ],
+        "eol-last": [
+            "warn",
+            "always"
         ]
     }
 }
