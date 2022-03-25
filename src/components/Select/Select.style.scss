@@ -1,0 +1,37 @@
+@import "src/styles/functions";
+@import "src/styles/mixins";
+@import "src/styles/variables.scss";
+
+.select {
+  &__container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    &--disabled {
+      opacity: 0.5;
+      cursor: default;
+    }
+
+    &--readonly {
+      cursor: default;
+    }
+  }
+
+  &__icon {
+    @include fixed-width(space-base(11px));
+
+    margin-left: margin-base(2);
+    transform: rotate(0deg);
+
+    transition: transform $animation-time-quick linear;
+
+    &--open {
+      transform: rotate(180deg);
+    }
+
+    &--readonly {
+      opacity: 0.5;
+    }
+  }
+}

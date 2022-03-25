@@ -4,6 +4,7 @@
 .navbar-item {
   @include fixed-height(100%);
   padding: 0 padding-base(4);
+  cursor: pointer;
 
   display: inline-flex;
   align-items: center;
@@ -15,9 +16,6 @@
   &--active {
     color: $color-primary;
     font-weight: $font-weight-semi-bold;
-  }
-
-  &:not(&--active) {
-    cursor: pointer;
+    cursor: default;
   }
 }

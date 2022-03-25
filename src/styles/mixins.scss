@@ -15,3 +15,14 @@
   min-height: $height;
   max-height: $height;
 }
+
+@mixin fixed-width($width) {
+  width: $width;
+  min-width: $width;
+  max-width: $width;
+}
+
+@mixin box-shadow($shadow) {
+  -webkit-box-shadow: $shadow;
+  box-shadow: $shadow;
+}

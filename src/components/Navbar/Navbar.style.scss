@@ -9,6 +9,11 @@
   &__container {
     display: flex;
     flex: 1 1 0px;
+
+    &--right {
+      justify-content: flex-end;
+      align-items: center;
+    }
   }
 
   &__logo {

@@ -1,0 +1,10 @@
+@import "src/styles/variables";
+
+.select-option {
+  cursor: pointer;
+
+  &--disabled {
+    cursor: default;
+    color: rgba($color-disabled, 0.5);
+  }
+}

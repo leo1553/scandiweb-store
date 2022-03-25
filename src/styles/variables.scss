@@ -1,6 +1,8 @@
 // Colors
 $color-foreground: #1d1f22;
 $color-primary: #5ece7b;
+$color-surface: #ffffff;
+$color-disabled: #a6a6a6;
 
 // Font Sizes
 $font-size-normal: 1rem;
@@ -13,3 +15,6 @@ $font-weight-bold: 700;
 
 // Animation Times
 $animation-time-quick: 0.15s;
+
+// Shadows
+$shadow-extra-huge: 0px 0px 25px 0px rgba(0, 0, 0, 0.1);

@@ -29,7 +29,7 @@ export default class NavbarItemsComponent extends React.Component<NavbarItemsPro
 
   private updateLocation(location: Location) {
     const activePath = this.props.paths.find(path => path.path === location.pathname);
-    const position = activePath?.ref?.getPosition() ?? { position: this.state.position, width: this.state.width };
+    const position = activePath?.ref?.getPosition() ?? { position: 0, width: 0 };
 
     this.setState({
       path: location.pathname,
@@ -50,14 +50,16 @@ export default class NavbarItemsComponent extends React.Component<NavbarItemsPro
   render() {
     return (
       <div>
-        {
-          this.props.paths.map(path => (
-            <NavbarItemComponent ref={this.setRef(path)} title={path.title} path={path.path} key={path.title} active={this.isActiveClass(path.path)} />
-          ))
-        }
+        { this.renderItems() }
         <NavbarSelectedIndicatorComponent position={this.state.position} width={this.state.width} />
       </div>
     );
+  }
+
+  private renderItems() {
+    return this.props.paths.map(path => (
+      <NavbarItemComponent ref={this.setRef(path)} title={path.title} path={path.path} key={path.title} active={this.isActiveClass(path.path)} />
+    ));
   }
 }
 
