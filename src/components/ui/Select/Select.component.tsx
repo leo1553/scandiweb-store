@@ -4,80 +4,65 @@ import { OptionProps } from '../Option/Option.component';
 
 import './Select.style.scss';
 import { ReactComponent as ArrowDown } from '../../../assets/icons/arrow-down.svg';
+import classNames from 'classnames';
+import SelectItemsComponent from './SelectItems/SelectItems.component';
 
 export default class SelectComponent extends React.Component<SelectProps, SelectState> {
   private rootRef: RefObject<HTMLDivElement>;
-  private windowResizeListener: () => void;
 
   constructor(props: SelectProps) {
     super(props);
 
     this.state = {
       open: false,
-      selectedIndex: props.selectedIndex ?? -1,
-      left: 0,
-      top: 0,
-      width: 0
+      selectedIndex: props.selectedIndex ?? -1
     };
 
     this.rootRef = createRef();
-
-    this.windowResizeListener = () => {
-      if(this.state.open) 
-        this.setState(this.getPosition());
-    };
   }
 
   private get displayValue() {
     const existingChildren = this.props.children ?? [];
     const children = Array.isArray(existingChildren) ? existingChildren : [existingChildren];
     if(this.state.selectedIndex > -1 && this.state.selectedIndex < children.length) 
-      return children[this.state.selectedIndex].props.name;
+      return children[this.state.selectedIndex].props.label;
     return this.props.placeholder;
   }
 
   private get selectContainerClassName() {
-    if(this.props.disabled)
-      return 'select__container--disabled';
-    else if(this.props.readonly)
-      return 'select__container--readonly';
-    return '';
+    return classNames(
+      'select__container',
+      {
+        'select__container--disabled': this.props.disabled,
+        'select__container--readonly': this.props.readonly
+      }
+    );
   }
 
   private get selectIconClassName() {
-    const classes: string[] = [];
-    if(this.state.open)
-      classes.push('select__icon--open');
-    if(!this.props.disabled && this.props.readonly)
-      classes.push('select__icon--readonly');
-    return classes.join(' ');
+    return classNames(
+      'select__icon', 
+      {
+        'select__icon--open': this.state.open,
+        'select__icon--readonly': !this.props.disabled && this.props.readonly
+      }
+    );
   }
 
-  private getPosition() {
-    const target = this.rootRef.current!;
-    const targetRect = target.getBoundingClientRect();
-
-    return {
-      left: targetRect.left,
-      top: targetRect.top + targetRect.height,
-      width: targetRect.width
-    };
+  private get canChangeValue() {
+    return !this.props.disabled && !this.props.readonly;
   }
 
   private setOpen(open: boolean, event?: React.MouseEvent) {
-    if(open && (this.props.disabled || this.props.readonly))
+    if(open && !this.canChangeValue)
       return;
 
-    const position = this.getPosition();
-    this.setState({
-      open,
-      ...position
-    });
+    this.setState({ open });
     event?.stopPropagation();
   }
 
   private valueClick(value: unknown, index: number, event: MouseEvent) {
-    if(this.props.disabled || this.props.readonly)
+    if(!this.canChangeValue)
       return;
 
     this.setState({
@@ -88,14 +73,6 @@ export default class SelectComponent extends React.Component<SelectProps, Select
     event.stopPropagation();
   }
 
-  componentDidMount() {
-    window.addEventListener('resize', this.windowResizeListener);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.windowResizeListener);
-  }
-
   render() {
     return (
       <div
@@ -104,11 +81,11 @@ export default class SelectComponent extends React.Component<SelectProps, Select
         tabIndex={0}
         onClick={(event) => this.setOpen(true, event)}
       >
-        <div className={`select__container ${this.selectContainerClassName}`}>
+        <div className={this.selectContainerClassName}>
           <span className='select__value'>
             {this.displayValue}
           </span>
-          <ArrowDown className={`select__icon ${this.selectIconClassName}`} />
+          <ArrowDown className={this.selectIconClassName} />
         </div>
         {this.renderOverlay()}
       </div>
@@ -118,15 +95,16 @@ export default class SelectComponent extends React.Component<SelectProps, Select
   private renderOverlay() {
     if(this.state.open) {
       return (
-        <SelectOverlayComponent 
+        <SelectOverlayComponent
           onOutsideClick={(event) => this.setOpen(false, event)}
-          onOptionClick={(value, index, event) => this.valueClick(value, index, event)}
-          left={this.state.left}
-          top={this.state.top}
-          width={this.state.width}
-          selectedIndex={this.state.selectedIndex}
+          anchor={this.rootRef}
         >
-          {this.props.children}
+          <SelectItemsComponent
+            onOptionClick={(value, index, event) => this.valueClick(value, index, event)}
+            selectedIndex={this.state.selectedIndex}
+          >
+            {this.props.children}
+          </SelectItemsComponent>
         </SelectOverlayComponent>
       );
     }
@@ -145,7 +123,4 @@ export interface SelectProps {
 export interface SelectState {
   open: boolean;
   selectedIndex: number;
-  left: number;
-  top: number;
-  width: number;
 }

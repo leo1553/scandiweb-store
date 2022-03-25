@@ -8,7 +8,7 @@ export default class OptionComponent extends React.Component<OptionProps> {
 
 export interface OptionProps {
   children?: React.ReactNode;
-  name: string;
+  label: string;
   value: unknown;
   disabled?: boolean;
 }

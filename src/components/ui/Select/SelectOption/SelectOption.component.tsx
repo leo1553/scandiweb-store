@@ -1,5 +1,7 @@
-import React, { MouseEvent } from 'react';
+import classNames from 'classnames';
+import React from 'react';
 import { OptionProps } from '../../Option/Option.component';
+
 import './SelectOption.style.scss';
 
 export default class SelectOptionComponent extends React.Component<SelectOptionProps> {
@@ -9,12 +11,15 @@ export default class SelectOptionComponent extends React.Component<SelectOptionP
   }
 
   get selectOptionClassName() {
-    if(this.disabled) 
-      return 'select-option--disabled';
-    return '';
+    return classNames(
+      'select-option',
+      {
+        'select-option--disabled': this.disabled
+      }
+    );
   }
 
-  private onClick(event: MouseEvent) {
+  private onClick(event: React.MouseEvent) {
     const option = this.props.children;
     if (option && !this.disabled) {
       this.props.onClick(option.props.value, event);
@@ -25,7 +30,7 @@ export default class SelectOptionComponent extends React.Component<SelectOptionP
   render() {
     return (
       <div
-        className={`select-option ${this.selectOptionClassName}`}
+        className={this.selectOptionClassName}
         onClick={(event) => this.onClick(event)}
       >
         {this.props.children}
@@ -36,5 +41,5 @@ export default class SelectOptionComponent extends React.Component<SelectOptionP
 
 export interface SelectOptionProps {
   children?: React.ReactElement<OptionProps>;
-  onClick: (value: unknown, event: MouseEvent) => void;
+  onClick: (value: unknown, event: React.MouseEvent) => void;
 }

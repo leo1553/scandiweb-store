@@ -37,7 +37,7 @@ export default class CurrencySelectorComponent extends React.Component {
       return (
         <OptionComponent
           key={currency.label}
-          name={currency.symbol}
+          label={currency.symbol}
           value={currency}
         >
           { `${currency.symbol} ${currency.label}` }
