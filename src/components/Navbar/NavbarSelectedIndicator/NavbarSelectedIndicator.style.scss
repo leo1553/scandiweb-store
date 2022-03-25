@@ -1,0 +1,16 @@
+@import "src/styles/functions";
+@import "src/styles/mixins";
+@import "src/styles/variables";
+
+.navbar-selected-indicator {
+  $height: space-base(2px);
+  $half-height: $height / 2;
+
+  position: relative;
+  height: $height;
+  bottom: $half-height;
+  background-color: $color-primary;
+
+  transition: left $animation-time-quick ease-in-out,
+    width $animation-time-quick ease-in-out;
+}

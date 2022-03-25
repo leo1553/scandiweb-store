@@ -1,0 +1,13 @@
+$multiply-base: 1;
+
+@function space-base($space) {
+  @return $space * $multiply-base;
+}
+
+@function margin-base($margin) {
+  @return 4px * space-base($margin);
+}
+
+@function padding-base($padding) {
+  @return 4px * space-base($padding);
+}

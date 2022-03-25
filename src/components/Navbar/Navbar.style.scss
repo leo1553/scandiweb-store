@@ -1,0 +1,20 @@
+@import "src/styles/functions";
+@import "src/styles/mixins";
+
+.navbar {
+  @include fixed-height(space-base(80px));
+  padding: 0 padding-base(26);
+  display: flex;
+
+  &__container {
+    display: flex;
+    flex: 1 1 0px;
+  }
+
+  &__logo {
+    $size: space-base(40px);
+    width: $size;
+    height: $size;
+    align-self: center;
+  }
+}

@@ -1,11 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import AppRouter, { history } from './AppRouter';
+import reportWebVitals from './utils/reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <AppRouter history={history}>
+      <App />
+    </AppRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
