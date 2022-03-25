@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import IconButtonComponent from '../../IconButton/IconButton.component';
-import OptionComponent from '../../Option/Option.component';
-import SelectComponent from '../../Select/Select.component';
+import IconButtonComponent from '../../../ui/IconButton/IconButton.component';
+import OptionComponent from '../../../ui/Option/Option.component';
+import SelectComponent from '../../../ui/Select/Select.component';
 import './NavbarButtons.style.scss';
+import { ReactComponent as Cart } from '../../../../assets/icons/cart.svg';
 
 export default class NavbarButtonsComponent extends React.Component {
   render() {
@@ -11,7 +12,7 @@ export default class NavbarButtonsComponent extends React.Component {
       <div className='navbar-buttons'>
         <div className='navbar-buttons__currency'>
           <SelectComponent
-            placeholder='$'
+            selectedIndex={0}
           >
             <OptionComponent name='$' value='0'>Dolar</OptionComponent>
             <OptionComponent name='R$' value='1' disabled={true}>Real</OptionComponent>
@@ -19,7 +20,7 @@ export default class NavbarButtonsComponent extends React.Component {
           </SelectComponent>
         </div>
         <Link to='/cart'>
-          <IconButtonComponent icon='/img/cart.svg' />
+          <IconButtonComponent icon={<Cart />} />
         </Link>
       </div>
     );

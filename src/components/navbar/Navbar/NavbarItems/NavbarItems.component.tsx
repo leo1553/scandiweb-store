@@ -1,6 +1,6 @@
 import React from 'react';
 import { Location } from 'react-router-dom';
-import { history } from '../../../AppRouter';
+import { history } from '../../../../AppRouter';
 import NavbarItemComponent from '../NavbarItem/NavbarItem.component';
 import NavbarSelectedIndicatorComponent from '../NavbarSelectedIndicator/NavbarSelectedIndicator.component';
 

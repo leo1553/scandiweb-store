@@ -1,7 +1,9 @@
 import React, { createRef, MouseEvent, RefObject } from 'react';
 import SelectOverlayComponent from './SelectOverlay/SelectOverlay.component';
-import './Select.style.scss';
 import { OptionProps } from '../Option/Option.component';
+
+import './Select.style.scss';
+import { ReactComponent as ArrowDown } from '../../../assets/icons/arrow-down.svg';
 
 export default class SelectComponent extends React.Component<SelectProps, SelectState> {
   private rootRef: RefObject<HTMLDivElement>;
@@ -106,7 +108,7 @@ export default class SelectComponent extends React.Component<SelectProps, Select
           <span className='select__value'>
             {this.displayValue}
           </span>
-          <img className={`select__icon ${this.selectIconClassName}`} src='/img/arrow-down.svg' />
+          <ArrowDown className={`select__icon ${this.selectIconClassName}`} />
         </div>
         {this.renderOverlay()}
       </div>

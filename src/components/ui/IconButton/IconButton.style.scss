@@ -21,6 +21,7 @@
     $size: space-base(22px);
     @include fixed-height($size);
     @include fixed-width($size);
+    fill: $color-foreground;
   }
 
   &:disabled {
