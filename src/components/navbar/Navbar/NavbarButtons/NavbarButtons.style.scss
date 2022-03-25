@@ -3,17 +3,9 @@
 
 .navbar-buttons {
   display: flex;
+  align-items: center;
 
   & > :not(:first-child) {
     margin-left: margin-base(8);
-  }
-
-  &__currency {
-    display: flex;
-    align-items: center;
-
-    .select__value {
-      font-weight: $font-weight-medium;
-    }
   }
 }
