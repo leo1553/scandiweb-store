@@ -1,15 +1,19 @@
 // Colors
 $color-foreground: #1d1f22;
 $color-primary: #5ece7b;
+$color-on-primary: #ffffff;
 $color-surface: #ffffff;
 $color-background: #ffffff;
 $color-disabled: #a6a6a6;
 
 // Font Sizes
 $font-size-normal: 1rem;
+$font-size-normal-large: 1.125rem;
+$font-size-large: 1.5rem;
 $font-size-huge: 2.625rem;
 
 // Font Weights
+$font-weight-light: 300;
 $font-weight-normal: 400;
 $font-weight-medium: 500;
 $font-weight-semi-bold: 600;
@@ -19,7 +23,9 @@ $font-weight-bold: 700;
 $animation-time-quick: 0.15s;
 
 // Shadows
-$shadow-normal: 0px 0px 25px 0px rgba(0, 0, 0, 0.1);
+$shadow-color: rgba(0, 0, 0, 0.1);
+$shadow-none: 0px 0px 0px 0px $shadow-color;
+$shadow-normal: 0px 0px 25px 0px $shadow-color;
 
 // Padding
 $padding-page-base: 20;

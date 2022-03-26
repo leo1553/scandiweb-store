@@ -1,17 +1,20 @@
 import { client, Field, Query } from '@tilework/opus';
+import { Category } from '../../../models/Category.model';
 import { Product } from '../../../models/Product.model';
 
 export class ProductService {
   getProducts(categoryName: string) {
-    const query = new Query<'category', Product[], false>('category')
+    const query = new Query<'category', Category, false>('category')
       .addArgument('input', 'CategoryInput', { title: categoryName })
       .addField(new Field('products', true)
+        .addField('id')
         .addField('name')
         .addField('inStock')
         .addField('gallery', true)
         .addField(new Field('prices', true)
           .addField(new Field('currency')
             .addField('label')
+            .addField('symbol')
           )
           .addField('amount')
         )
@@ -19,7 +22,7 @@ export class ProductService {
 
     return client.post(query).then(
       (data) => {
-        const result = data.category as Product[];
+        const result = data.category.products as Product[];
         return result;
       },
       () => {

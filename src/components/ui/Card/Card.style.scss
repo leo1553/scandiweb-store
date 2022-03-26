@@ -3,6 +3,7 @@
 @import "src/styles/variables";
 
 .card {
+  display: inline-block;
   background-color: $color-surface;
-  padding: $padding-base(4);
+  padding: padding-base(4);
 }

@@ -1,12 +1,24 @@
 import React from 'react';
-import { ChildrenProp } from '../../common/props/ChildrenProp.model';
 
-export default class CardComponent extends React.Component<ChildrenProp> {
+import './Card.style.scss';
+
+export default class CardComponent extends React.Component<CardProps> {
+  get className() {
+    const classes = ['card'];
+    if(this.props.className)
+      classes.push(this.props.className);
+    return classes.join(' ');
+  }
+
   render() {
     return (
-      <div className='card'>
+      <div {...this.props} className={this.className}>
         {this.props.children}
       </div>
     );
   }
+}
+
+export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
+  className?: string;
 }
