@@ -1,25 +1,42 @@
 import React from 'react';
+import { Currency } from '../../../models/Currency.model';
+import { currencyService } from '../../../services/data/Currency/Currency.service';
 import OptionComponent from '../../ui/Option/Option.component';
 import SelectComponent from '../../ui/Select/Select.component';
+import CurrencySelectorItemComponent from './CurrencySelectorItem/CurrencySelectorItem.component';
 
 import './CurrencySelector.style.scss';
 
-const currencies = [
-  {
-    label: 'USD',
-    symbol: '$'
-  },
-  {
-    label: 'EUR',
-    symbol: '€'
-  },
-  {
-    label: 'JPY',
-    symbol: '¥'
-  }
-];
+export default class CurrencySelectorComponent extends React.Component<unknown, CurrencySelectorState> {
+  private unlisten?: () => void;
 
-export default class CurrencySelectorComponent extends React.Component {
+  constructor(props: unknown) {
+    super(props);
+
+    this.state = {
+      currencies: []
+    };
+  }
+
+  private onCurrenciesChange(currencies: Currency[] | null | undefined) {
+    if(!currencies) 
+      return;
+    this.setState({
+      currencies
+    });
+  }
+
+  componentDidMount() {
+    this.unlisten = currencyService.listen(
+      (data) => this.onCurrenciesChange(data),
+      true
+    );
+  }
+
+  componentWillUnmount() {
+    this.unlisten?.();
+  }
+
   render() {
     return (
       <div className='currency-selector'>
@@ -33,16 +50,20 @@ export default class CurrencySelectorComponent extends React.Component {
   }
 
   renderCurrencies() {
-    return currencies.map((currency) => {
+    return this.state.currencies.map((currency) => {
       return (
         <OptionComponent
           key={currency.label}
           label={currency.symbol}
           value={currency}
         >
-          { `${currency.symbol} ${currency.label}` }
+          <CurrencySelectorItemComponent currency={currency} />
         </OptionComponent>
       );
     });
   }
+}
+
+export interface CurrencySelectorState {
+  currencies: Currency[];
 }

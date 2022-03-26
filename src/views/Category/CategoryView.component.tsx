@@ -2,7 +2,7 @@ import React from 'react';
 import { capitalize } from '../../utils/capitalize';
 import { RoutedProps, withRouter } from '../../utils/withRouter';
 
-class ListingViewComponent extends React.Component<RoutedProps> {
+class CategoryViewComponent extends React.Component<RoutedProps> {
   get header() {
     const category = this.props.params.category;
     return category ? capitalize(category) : 'Listing';
@@ -12,10 +12,10 @@ class ListingViewComponent extends React.Component<RoutedProps> {
     return (
       <div>
         <h1>{this.header}</h1>
-        <p>This is the listing view.</p>
+        <p>This is the category view.</p>
       </div>
     );
   }
 }
 
-export default withRouter(ListingViewComponent);
+export default withRouter(CategoryViewComponent);

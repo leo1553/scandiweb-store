@@ -62,8 +62,11 @@ export default class SelectComponent extends React.Component<SelectProps, Select
   }
 
   private valueClick(value: unknown, index: number, event: MouseEvent) {
-    if(!this.canChangeValue)
-      return;
+    if(!this.canChangeValue || index === this.state.selectedIndex) {
+      this.setState({
+        open: false
+      });
+    }
 
     this.setState({
       selectedIndex: index,

@@ -73,8 +73,11 @@ export interface NavbarItemsState {
   width: number;
 }
 
-export interface NavbarItemsPath {
+export interface NavbarItem {
   title: string;
   path: string;
+}
+
+export interface NavbarItemsPath extends NavbarItem {
   ref?: NavbarItemComponent;
 }

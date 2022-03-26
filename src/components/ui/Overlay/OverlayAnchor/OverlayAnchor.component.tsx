@@ -1,6 +1,8 @@
 import React from 'react';
 
 export default class OverlayAnchorComponent extends React.Component<OverlayAnchorProps, OverlayAnchorState> {
+  private unlisten?: () => void;
+
   constructor(props: OverlayAnchorProps) {
     super(props);
 
@@ -39,12 +41,14 @@ export default class OverlayAnchorComponent extends React.Component<OverlayAncho
   }
 
   componentDidMount() {
-    window.addEventListener('resize', this.updatePosition.bind(this));
+    this.unlisten = this.updatePosition.bind(this);
+    window.addEventListener('resize', this.unlisten);
     this.updatePosition();
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', this.updatePosition.bind(this));
+    if(this.unlisten)
+      window.removeEventListener('resize', this.unlisten);
   }
 
   render() {

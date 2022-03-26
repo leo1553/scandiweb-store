@@ -1,6 +1,6 @@
 import React from 'react';
 import { OptionProps } from '../../Option/Option.component';
-import SelectOptionComponent from '../SelectOption/SelectOption.component';
+import SelectItemComponent from '../SelectItem/SelectItem.component';
 
 import './SelectItems.style.scss';
 
@@ -24,9 +24,13 @@ export default class SelectItemsComponent extends React.Component<SelectItemsPro
     if(this.props.children) {
       const children = Array.isArray(this.props.children) ? this.props.children : [this.props.children];
       return children.map((child, index) => (
-        <SelectOptionComponent onClick={(value, event) => this.props.onOptionClick(value, index, event)} key={index}>
+        <SelectItemComponent
+          onClick={(value, event) => this.props.onOptionClick(value, index, event)}
+          key={index}
+          selected={index === this.props.selectedIndex}
+        >
           {child}
-        </SelectOptionComponent>
+        </SelectItemComponent>
       ));
     }
   }

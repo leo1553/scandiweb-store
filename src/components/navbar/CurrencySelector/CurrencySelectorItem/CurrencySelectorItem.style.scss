@@ -1,0 +1,12 @@
+@import "src/styles/functions";
+@import "src/styles/variables";
+
+.currency-selector-item {
+  display: flex;
+
+  &__symbol {
+    min-width: space-base(24px);
+    margin-right: margin-base(2);
+    font-weight: $font-weight-semi-bold;
+  }
+}

@@ -1,8 +1,11 @@
+import { client } from '@tilework/opus';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import AppRouter, { history } from './AppRouter';
 import reportWebVitals from './utils/reportWebVitals';
+
+client.setEndpoint('http://localhost:4000/graphql');
 
 ReactDOM.render(
   <React.StrictMode>

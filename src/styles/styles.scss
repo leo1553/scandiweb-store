@@ -8,6 +8,7 @@
 body {
   @include font();
   color: $color-foreground;
+  background-color: $color-background;
 
   position: absolute;
   top: 0;

@@ -2,19 +2,20 @@ import classNames from 'classnames';
 import React from 'react';
 import { OptionProps } from '../../Option/Option.component';
 
-import './SelectOption.style.scss';
+import './SelectItem.style.scss';
 
-export default class SelectOptionComponent extends React.Component<SelectOptionProps> {
+export default class SelectItemComponent extends React.Component<SelectItemProps> {
   get disabled() {
     const child = this.props.children;
     return child && child.props.disabled;
   }
 
-  get selectOptionClassName() {
+  get SelectItemClassName() {
     return classNames(
-      'select-option',
+      'select-item',
       {
-        'select-option--disabled': this.disabled
+        'select-item--disabled': this.disabled,
+        'select-item--selected': this.props.selected
       }
     );
   }
@@ -30,7 +31,8 @@ export default class SelectOptionComponent extends React.Component<SelectOptionP
   render() {
     return (
       <div
-        className={this.selectOptionClassName}
+        tabIndex={0}
+        className={this.SelectItemClassName}
         onClick={(event) => this.onClick(event)}
       >
         {this.props.children}
@@ -39,7 +41,8 @@ export default class SelectOptionComponent extends React.Component<SelectOptionP
   }
 }
 
-export interface SelectOptionProps {
+export interface SelectItemProps {
   children?: React.ReactElement<OptionProps>;
+  selected: boolean;
   onClick: (value: unknown, event: React.MouseEvent) => void;
 }
