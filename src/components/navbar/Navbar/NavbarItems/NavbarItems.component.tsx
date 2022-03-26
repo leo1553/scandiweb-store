@@ -29,7 +29,10 @@ export default class NavbarItemsComponent extends React.Component<NavbarItemsPro
 
   private updateLocation(location: Location) {
     const activePath = this.props.paths.find(path => path.path === location.pathname);
-    const position = activePath?.ref?.getPosition() ?? { position: 0, width: 0 };
+    const position = activePath?.ref?.getPosition() ?? { 
+      position: this.state.position + (this.state.width * 0.5),
+      width: 0
+    };
 
     this.setState({
       path: location.pathname,

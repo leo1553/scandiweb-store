@@ -1,0 +1,15 @@
+@import "src/styles/functions";
+
+.product-display {
+  display: flex;
+  justify-content: center;
+
+  &__rows {
+    display: flex;
+    flex-direction: column;
+
+    & > *:not(:first-child) {
+      margin-top: margin-base(10);
+    }
+  }
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-import ProductCardComponent from '../../components/display/ProductCard/ProductCard.component';
+import ProductDisplayComponent from '../../components/display/ProductDisplay/ProductDisplay.component';
 import { Product } from '../../models/Product.model';
 import { productService } from '../../services/data/Product/Product.service';
 import { capitalize } from '../../utils/capitalize';
@@ -51,29 +51,27 @@ class CategoryViewComponent extends React.Component<RoutedProps, CategoryViewSta
   }
 
   render() {
-    if(this.state.products === undefined)
-      return this.renderLoading();
-    if(this.state.products === null)
-      return this.renderError();
-    return this.renderContent();
-  }
-
-  private renderContent() {
     return (
       <div className='category-view'>
         <span className='category-view__title'>{this.header}</span>
         <div>
-          { this.renderProducts() }
+          { this.renderContent() }
         </div>
       </div>
     );
   }
 
+  private renderContent() {
+    if(this.state.products === undefined)
+      return this.renderLoading();
+    if(this.state.products === null)
+      return this.renderError();
+    return this.renderProducts();
+  }
+
   private renderProducts() {
     if(this.state.products) {
-      return this.state.products.map(product => (
-        <ProductCardComponent key={product.id} product={product} />
-      ));
+      return <ProductDisplayComponent products={this.state.products} />;
     }
   }
 

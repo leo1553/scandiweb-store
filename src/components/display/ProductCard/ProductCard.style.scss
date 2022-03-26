@@ -23,7 +23,7 @@ $size: space-base(356px);
 
   &__details {
     position: relative;
-    margin-top: margin-base(6);
+    padding-top: padding-base(6);
 
     $font-size: $font-size-normal-large;
     font-size: $font-size;
@@ -49,6 +49,7 @@ $size: space-base(356px);
     height: $size;
     border-radius: 50%;
     background-color: $color-primary;
+    box-shadow: $shadow-small;
 
     display: flex;
     justify-content: center;

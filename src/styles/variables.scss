@@ -23,9 +23,9 @@ $font-weight-bold: 700;
 $animation-time-quick: 0.15s;
 
 // Shadows
-$shadow-color: rgba(0, 0, 0, 0.1);
-$shadow-none: 0px 0px 0px 0px $shadow-color;
-$shadow-normal: 0px 0px 25px 0px $shadow-color;
+$shadow-none: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+$shadow-small: 0px 0px 8px 0px rgba(0, 0, 0, 0.4);
+$shadow-normal: 0px 0px 25px 0px rgba(0, 0, 0, 0.1);
 
 // Padding
 $padding-page-base: 20;

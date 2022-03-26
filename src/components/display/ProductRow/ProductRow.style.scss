@@ -1,0 +1,13 @@
+@import "src/styles/functions";
+
+.product-row {
+  display: inline-block;
+
+  &--with-margin {
+    margin-left: margin-base(10);
+  }
+
+  & > *:not(:first-child) {
+    @extend .product-row--with-margin;
+  }
+}
