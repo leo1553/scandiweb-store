@@ -3,7 +3,7 @@
 @import "src/styles/variables.scss";
 
 .select-items {
-  @include box-shadow($shadow-extra-huge);
+  @include box-shadow($shadow-normal);
   background-color: $color-surface;
   transform: translate(margin-base(-5), margin-base(2));
 

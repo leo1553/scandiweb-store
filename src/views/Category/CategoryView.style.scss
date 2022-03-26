@@ -1,0 +1,12 @@
+@import "src/styles/functions";
+@import "src/styles/variables";
+
+.category-view {
+  padding: padding-base(16) padding-base($padding-page-base);
+
+  &__title {
+    display: block;
+    font-size: $font-size-huge;
+    margin-bottom: padding-base(12);
+  }
+}

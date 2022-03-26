@@ -39,6 +39,15 @@ export default class SelectComponent extends React.Component<SelectProps, Select
     );
   }
 
+  private get selectValueClassName() {
+    return classNames(
+      'select__value',
+      {
+        'select__value--placeholder': this.state.selectedIndex === -1
+      }
+    );
+  }
+
   private get selectIconClassName() {
     return classNames(
       'select__icon', 
@@ -85,7 +94,7 @@ export default class SelectComponent extends React.Component<SelectProps, Select
         onClick={(event) => this.setOpen(true, event)}
       >
         <div className={this.selectContainerClassName}>
-          <span className='select__value'>
+          <span className={this.selectValueClassName}>
             {this.displayValue}
           </span>
           <ArrowDown className={this.selectIconClassName} />

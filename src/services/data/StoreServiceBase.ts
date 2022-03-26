@@ -1,12 +1,12 @@
 import { Store, StoreListener } from './Store';
 
-export enum DataServiceState {
+export enum StoreServiceState {
   LOADING,
   ERROR,
   LOADED
 }
 
-export abstract class DataServiceBase<T, S = T | null | undefined> {
+export abstract class StoreServiceBase<T, S = T | null | undefined> {
   protected store: Store<S>;
 
   constructor(initialState: S) {
@@ -15,10 +15,10 @@ export abstract class DataServiceBase<T, S = T | null | undefined> {
 
   get state() {
     if(this.isLoading())
-      return DataServiceState.LOADING;
+      return StoreServiceState.LOADING;
     if(this.isError())
-      return DataServiceState.ERROR;
-    return DataServiceState.LOADED;
+      return StoreServiceState.ERROR;
+    return StoreServiceState.LOADED;
   }
 
   get value() {
@@ -34,7 +34,7 @@ export abstract class DataServiceBase<T, S = T | null | undefined> {
   }
 
   isLoaded() {
-    return this.state === DataServiceState.LOADED;
+    return this.state === StoreServiceState.LOADED;
   }
 
   listen(listener: StoreListener<S>, emit = false) {

@@ -35,4 +35,10 @@
       opacity: 0.5;
     }
   }
+
+  &__value {
+    &--placeholder {
+      opacity: 0.5;
+    }
+  }
 }

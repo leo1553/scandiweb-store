@@ -1,9 +1,10 @@
 @import "src/styles/functions";
 @import "src/styles/mixins";
+@import "src/styles/variables";
 
 .navbar {
   @include fixed-height(space-base(80px));
-  padding: 0 padding-base(26);
+  padding: 0 padding-base($padding-page-base);
   display: flex;
 
   &__container {
