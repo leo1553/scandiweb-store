@@ -2,12 +2,19 @@ import React from 'react';
 import './IconButton.style.scss';
 
 export default class IconButtonComponent extends React.Component<IconButtonProps> {
+  private get className() {
+    const classes = ['icon-button'];
+    if(this.props.className)
+      classes.push(this.props.className);
+    return classes.join(' ');
+  }
+
   render() {
     const { icon, ...props } = this.props;
     return (
       <button 
-        className='icon-button'
         {...props}
+        className={this.className}
       >
         {this.renderIcon()}
       </button>

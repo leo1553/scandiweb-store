@@ -1,0 +1,9 @@
+@import "src/styles/variables";
+
+.cart-button {
+  transition: color $animation-time-quick ease-in-out;
+
+  &--selected {
+    color: $color-primary;
+  }
+}
