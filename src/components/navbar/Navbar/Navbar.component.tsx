@@ -1,6 +1,6 @@
 import React from 'react';
 import { Category } from '../../../models/Category.model';
-import { categoryService } from '../../../services/data/Category/Category.service';
+import { categoryDataService } from '../../../services/data/Category/CategoryData.service';
 import NavbarButtonsComponent from './NavbarButtons/NavbarButtons.component';
 import NavbarItemsComponent, { NavbarItem } from './NavbarItems/NavbarItems.component';
 
@@ -29,7 +29,7 @@ export default class NavbarComponent extends React.Component<unknown, NavbarStat
   }
 
   componentDidMount() {
-    this.unlisten = categoryService.listen(
+    this.unlisten = categoryDataService.listen(
       (data) => this.onCategoriesChange(data),
       true
     );

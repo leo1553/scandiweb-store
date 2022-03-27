@@ -87,6 +87,12 @@ export default class SelectComponent extends React.Component<SelectProps, Select
     event.stopPropagation();
   }
 
+  componentDidUpdate(prevProps: SelectProps) {
+    if(prevProps.value != this.props.value && this.props.value != null) {
+      this.setState({ selectedIndex: this.props.value });
+    }
+  }
+
   render() {
     return (
       <div
@@ -134,7 +140,7 @@ export interface SelectState {
   selectedIndex: number;
 }
 
-export interface SelectChangeEvent { 
-  value: unknown;
+export interface SelectChangeEvent<T = any> { 
+  value: T;
   index: number;
 }

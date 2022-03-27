@@ -1,8 +1,8 @@
 import React from 'react';
 import AppRoutes from './AppRoutes';
 import NavbarComponent from './components/navbar/Navbar/Navbar.component';
-import { categoryService } from './services/data/Category/Category.service';
-import { currencyService } from './services/data/Currency/Currency.service';
+import { categoryDataService } from './services/data/Category/CategoryData.service';
+import { currencyDataService } from './services/data/Currency/CurrencyData.service';
 
 import './App.style.scss';
 import './styles/styles.scss';
@@ -18,21 +18,21 @@ export default class App extends React.Component<unknown, AppState> {
   }
 
   get isLoading() {
-    return categoryService.isLoading() || currencyService.isLoading();
+    return categoryDataService.isLoading() || currencyDataService.isLoading();
   }
 
   get isError() {
-    return categoryService.isError() || currencyService.isError();
+    return categoryDataService.isError() || currencyDataService.isError();
   }
 
   private queryCategories() {
-    categoryService
+    categoryDataService
       .queryCategories()
       .then(() => this.onServiceResponse());
   }
 
   private queryCurrencies() {
-    currencyService
+    currencyDataService
       .queryCurrencies()
       .then(() => this.onServiceResponse());
   }

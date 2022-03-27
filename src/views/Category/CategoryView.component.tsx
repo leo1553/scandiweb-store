@@ -1,7 +1,7 @@
 import React from 'react';
 import ProductDisplayComponent from '../../components/display/ProductDisplay/ProductDisplay.component';
 import { Product } from '../../models/Product.model';
-import { productService } from '../../services/data/Product/Product.service';
+import { productDataService } from '../../services/data/Product/ProductData.service';
 import { capitalize } from '../../utils/capitalize';
 import { RoutedProps, withRouter } from '../../utils/withRouter';
 
@@ -31,7 +31,7 @@ class CategoryViewComponent extends React.Component<RoutedProps, CategoryViewSta
         categoryName: categoryName,
         products: undefined
       });
-      productService.getProducts(categoryName)
+      productDataService.getProducts(categoryName)
         .then(products => {
           this.setState({
             products

@@ -2,7 +2,7 @@ import { client, Field, Query } from '@tilework/opus';
 import { Category } from '../../../models/Category.model';
 import { Product } from '../../../models/Product.model';
 
-export class ProductService {
+export class ProductDataService {
   getProducts(categoryName: string) {
     const query = new Query<'category', Category, false>('category')
       .addArgument('input', 'CategoryInput', { title: categoryName })
@@ -32,4 +32,4 @@ export class ProductService {
   }
 }
 
-export const productService = new ProductService();
+export const productDataService = new ProductDataService();

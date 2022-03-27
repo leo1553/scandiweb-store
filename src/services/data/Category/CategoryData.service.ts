@@ -1,8 +1,8 @@
 import { client, Query } from '@tilework/opus';
 import { Category } from '../../../models/Category.model';
-import { StoreServiceBase } from '../StoreServiceBase';
+import { StoreDataServiceBase } from '../StoreDataServiceBase';
 
-export class CategoryService extends StoreServiceBase<Category[]> {
+export class CategoryDataService extends StoreDataServiceBase<Category[]> {
   constructor() {
     super(undefined);
   }
@@ -27,4 +27,4 @@ export class CategoryService extends StoreServiceBase<Category[]> {
   }
 }
 
-export const categoryService = new CategoryService();
+export const categoryDataService = new CategoryDataService();

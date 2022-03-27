@@ -1,8 +1,8 @@
 import { client, Query } from '@tilework/opus';
 import { Currency } from '../../../models/Currency.model';
-import { StoreServiceBase } from '../StoreServiceBase';
+import { StoreDataServiceBase } from '../StoreDataServiceBase';
 
-export class CurrencyService extends StoreServiceBase<Currency[]> {
+export class CurrencyService extends StoreDataServiceBase<Currency[]> {
   constructor() {
     super(undefined);
   }
@@ -28,4 +28,4 @@ export class CurrencyService extends StoreServiceBase<Currency[]> {
   }
 }
 
-export const currencyService = new CurrencyService();
+export const currencyDataService = new CurrencyService();

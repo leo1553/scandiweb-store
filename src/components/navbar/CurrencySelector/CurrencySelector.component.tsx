@@ -1,11 +1,12 @@
 import React from 'react';
 import { Currency } from '../../../models/Currency.model';
-import { currencyService } from '../../../services/data/Currency/Currency.service';
+import { currencyDataService } from '../../../services/data/Currency/CurrencyData.service';
 import OptionComponent from '../../ui/Option/Option.component';
-import SelectComponent from '../../ui/Select/Select.component';
+import SelectComponent, { SelectChangeEvent } from '../../ui/Select/Select.component';
 import CurrencySelectorItemComponent from './CurrencySelectorItem/CurrencySelectorItem.component';
 
 import './CurrencySelector.style.scss';
+import { currencyService } from '../../../services/Currency/Currency.service';
 
 export default class CurrencySelectorComponent extends React.Component<unknown, CurrencySelectorState> {
   private unlisten?: () => void;
@@ -14,20 +15,30 @@ export default class CurrencySelectorComponent extends React.Component<unknown, 
     super(props);
 
     this.state = {
-      currencies: []
+      currencies: [],
+      current: currencyService.value
     };
+  }
+
+  get currentCurrencyIndex() {
+    return this.state.currencies.findIndex(currency => this.state.current?.label === currency.label);
   }
 
   private onCurrenciesChange(currencies: Currency[] | null | undefined) {
     if(!currencies) 
       return;
     this.setState({
-      currencies
+      currencies,
+      current: this.state.current ?? currencies[0]
     });
   }
 
+  private onSelectChange(event: SelectChangeEvent<Currency>) {
+    currencyService.notify(event.value);
+  }
+
   componentDidMount() {
-    this.unlisten = currencyService.listen(
+    this.unlisten = currencyDataService.listen(
       (data) => this.onCurrenciesChange(data),
       true
     );
@@ -40,7 +51,10 @@ export default class CurrencySelectorComponent extends React.Component<unknown, 
   render() {
     return (
       <div className='currency-selector'>
-        <SelectComponent value={0}>
+        <SelectComponent
+          value={this.currentCurrencyIndex}
+          onChange={(event) => this.onSelectChange(event)}
+        >
           { this.renderCurrencies() }
         </SelectComponent>
       </div>
@@ -64,4 +78,5 @@ export default class CurrencySelectorComponent extends React.Component<unknown, 
 
 export interface CurrencySelectorState {
   currencies: Currency[];
+  current: Currency | null;
 }
