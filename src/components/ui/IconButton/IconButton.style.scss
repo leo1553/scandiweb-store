@@ -1,5 +1,6 @@
 @import "src/styles/functions";
 @import "src/styles/mixins";
+@import "src/styles/variables";
 
 .icon-button {
   $size: space-base(32px);
@@ -21,11 +22,11 @@
     $size: space-base(22px);
     @include fixed-height($size);
     @include fixed-width($size);
-    fill: $color-foreground;
   }
 
   &:disabled {
     background: unset;
     cursor: default;
+    color: $color-disabled;
   }
 }

@@ -3,10 +3,11 @@ import './IconButton.style.scss';
 
 export default class IconButtonComponent extends React.Component<IconButtonProps> {
   render() {
+    const { icon, ...props } = this.props;
     return (
       <button 
         className='icon-button'
-        {...this.props}
+        {...props}
       >
         {this.renderIcon()}
       </button>
@@ -23,11 +24,7 @@ export default class IconButtonComponent extends React.Component<IconButtonProps
   private renderComponent() {
     const component = this.props.icon as React.ReactElement<any>;
     return React.cloneElement(component, {
-      className: 'icon-button__icon',
-      style: {
-        fill: this.props.fill,
-        stroke: this.props.stroke
-      }
+      className: 'icon-button__icon'
     });
   }
 
@@ -39,6 +36,4 @@ export default class IconButtonComponent extends React.Component<IconButtonProps
 
 export interface IconButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   icon: string | React.ReactElement<any>;
-  fill?: string;
-  stroke?: string;
 }

@@ -1,0 +1,12 @@
+@import "src/styles/functions";
+@import "src/styles/mixins";
+
+.paginator-dots {
+  @include fixed-width(space-base(32px));
+  @include fixed-height(space-base(32px));
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 padding-base(1);
+  cursor: default;
+}

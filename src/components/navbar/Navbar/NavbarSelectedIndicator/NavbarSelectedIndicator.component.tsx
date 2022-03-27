@@ -1,11 +1,6 @@
 import React from 'react';
 import './NavbarSelectedIndicator.style.scss';
 
-export interface NavbarSelectedIndicatorProps {
-  position: number;
-  width: number;
-}
-
 export default class NavbarSelectedIndicatorComponent extends React.Component<NavbarSelectedIndicatorProps> {
   constructor(props: NavbarSelectedIndicatorProps) {
     super(props);
@@ -22,4 +17,9 @@ export default class NavbarSelectedIndicatorComponent extends React.Component<Na
       ></div>
     );
   }
+}
+
+export interface NavbarSelectedIndicatorProps {
+  position: number;
+  width: number;
 }

@@ -6,6 +6,7 @@ import './Select.style.scss';
 import { ReactComponent as ArrowDown } from '../../../assets/icons/arrow-down.svg';
 import classNames from 'classnames';
 import SelectItemsComponent from './SelectItems/SelectItems.component';
+import { ControlProps } from '../../common/props/ControlProps';
 
 export default class SelectComponent extends React.Component<SelectProps, SelectState> {
   private rootRef: RefObject<HTMLDivElement>;
@@ -15,7 +16,7 @@ export default class SelectComponent extends React.Component<SelectProps, Select
 
     this.state = {
       open: false,
-      selectedIndex: props.selectedIndex ?? -1
+      selectedIndex: props.value ?? -1
     };
 
     this.rootRef = createRef();
@@ -72,16 +73,17 @@ export default class SelectComponent extends React.Component<SelectProps, Select
 
   private valueClick(value: unknown, index: number, event: MouseEvent) {
     if(!this.canChangeValue || index === this.state.selectedIndex) {
-      this.setState({
-        open: false
-      });
+      this.setState({ open: false });
     }
 
     this.setState({
       selectedIndex: index,
       open: false
     });
-    this.props.onChange?.(value, index);
+    this.props.onChange?.({
+      value,
+      index
+    });
     event.stopPropagation();
   }
 
@@ -123,16 +125,16 @@ export default class SelectComponent extends React.Component<SelectProps, Select
   }
 }
 
-export interface SelectProps {
+export interface SelectProps extends ControlProps<number, SelectChangeEvent> {
   children?: React.ReactElement<OptionProps> | React.ReactElement<OptionProps>[];
-  disabled?: boolean;
-  readonly?: boolean;
-  placeholder?: string;
-  selectedIndex?: number;
-  onChange?: (value: unknown, index: number) => void;
 }
 
 export interface SelectState {
   open: boolean;
   selectedIndex: number;
+}
+
+export interface SelectChangeEvent { 
+  value: unknown;
+  index: number;
 }

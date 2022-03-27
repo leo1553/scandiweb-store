@@ -2,7 +2,8 @@
 
 .product-display {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 
   &__rows {
     display: flex;
@@ -11,5 +12,9 @@
     & > *:not(:first-child) {
       margin-top: margin-base(10);
     }
+  }
+
+  &__paginator {
+    margin-top: margin-base(10);
   }
 }

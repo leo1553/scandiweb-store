@@ -1,6 +1,7 @@
 import React from 'react';
 import { Product } from '../../../models/Product.model';
 import { computeNumberStyle } from '../../../utils/computeStyle';
+import PaginatorComponent from '../../ui/Paginator/Paginator.component';
 import ProductRowComponent from '../ProductRow/ProductRow.component';
 
 import './ProductDisplay.style.scss';
@@ -19,7 +20,8 @@ export default class ProductDisplayComponent extends React.Component<ProductDisp
     this.rootRef = React.createRef();
 
     this.state = {
-      countPerRow: 1
+      countPerRow: 1,
+      productsInPage: this.props.products.slice(0, props.itemsPerPage)
     };
   }
 
@@ -35,6 +37,13 @@ export default class ProductDisplayComponent extends React.Component<ProductDisp
         countPerRow: count
       });
     }
+  }
+
+  private pageChange(page: number) {
+    const startIndex = (page - 1) * this.props.itemsPerPage;
+    this.setState({
+      productsInPage: this.props.products.slice(startIndex, startIndex + this.props.itemsPerPage)
+    });
   }
 
   componentDidMount() {
@@ -57,12 +66,19 @@ export default class ProductDisplayComponent extends React.Component<ProductDisp
         <div className='product-display__rows'>
           {this.renderRows()}
         </div>
+        <div className='product-display__paginator'>
+          <PaginatorComponent
+            items={this.props.products.length}
+            itemsPerPage={this.props.itemsPerPage}
+            onChange={(page) => this.pageChange(page)}
+          />
+        </div>
       </div>
     );
   }
 
   private renderRows() {
-    const rows = this.props.products.reduce(
+    const rows = this.state.productsInPage.reduce(
       (previous, current, index) => {
         const row = Math.floor(index / this.state.countPerRow);
         if(!previous[row])
@@ -81,8 +97,10 @@ export default class ProductDisplayComponent extends React.Component<ProductDisp
 
 export interface ProductDisplayProps {
   products: Product[];
+  itemsPerPage: number;
 }
 
 export interface ProductDisplayState {
+  productsInPage: Product[];
   countPerRow: number;
 }

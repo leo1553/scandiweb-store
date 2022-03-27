@@ -40,9 +40,7 @@ export default class CurrencySelectorComponent extends React.Component<unknown, 
   render() {
     return (
       <div className='currency-selector'>
-        <SelectComponent
-          selectedIndex={0}
-        >
+        <SelectComponent value={0}>
           { this.renderCurrencies() }
         </SelectComponent>
       </div>

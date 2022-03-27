@@ -4,6 +4,7 @@ import NavbarComponent from './components/navbar/Navbar/Navbar.component';
 import { categoryService } from './services/data/Category/Category.service';
 import { currencyService } from './services/data/Currency/Currency.service';
 
+import './App.style.scss';
 import './styles/styles.scss';
 
 export default class App extends React.Component<unknown, AppState> {
@@ -58,10 +59,14 @@ export default class App extends React.Component<unknown, AppState> {
 
   private renderContent() {
     return (
-      <>
+      <div className='app'>
         <NavbarComponent />
-        <AppRoutes />
-      </>
+        <div className='app__view-container'>
+          <div className='app__view'>
+            <AppRoutes />
+          </div>
+        </div>
+      </div>
     );
   }
 

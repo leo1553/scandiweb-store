@@ -1,0 +1,35 @@
+@import "src/styles/functions";
+@import "src/styles/mixins";
+@import "src/styles/variables";
+
+.paginator-item {
+  display: inline-flex;
+  padding: 0 padding-base(1);
+  cursor: pointer;
+
+  &__value {
+    @include fixed-width(space-base(32px));
+    @include fixed-height(space-base(32px));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: padding-base(0.5);
+
+    &--selected {
+      border-radius: 50%;
+      background-color: $color-primary;
+      color: $color-on-primary;
+
+      &.paginator-item__value--disabled {
+        background-color: $color-disabled;
+        color: $color-on-disabled;
+      }
+    }
+  }
+
+  &--disabled,
+  &--readonly,
+  &--selected {
+    cursor: default;
+  }
+}

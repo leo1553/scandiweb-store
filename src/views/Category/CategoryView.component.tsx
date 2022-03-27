@@ -54,9 +54,7 @@ class CategoryViewComponent extends React.Component<RoutedProps, CategoryViewSta
     return (
       <div className='category-view'>
         <span className='category-view__title'>{this.header}</span>
-        <div>
-          { this.renderContent() }
-        </div>
+        { this.renderContent() }
       </div>
     );
   }
@@ -71,7 +69,7 @@ class CategoryViewComponent extends React.Component<RoutedProps, CategoryViewSta
 
   private renderProducts() {
     if(this.state.products) {
-      return <ProductDisplayComponent products={this.state.products} />;
+      return <ProductDisplayComponent products={this.state.products} itemsPerPage={12} />;
     }
   }
 
