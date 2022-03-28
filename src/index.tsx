@@ -5,7 +5,7 @@ import App from './App';
 import AppRouter, { history } from './AppRouter';
 import reportWebVitals from './utils/reportWebVitals';
 
-client.setEndpoint('http://localhost:4000/graphql');
+client.setEndpoint(process.env.REACT_APP_ENDPOINT!);
 
 ReactDOM.render(
   <React.StrictMode>

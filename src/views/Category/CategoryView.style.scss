@@ -3,11 +3,26 @@
 @import "src/styles/variables";
 
 .category-view {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
   padding: padding-base(16) padding-base($padding-page-base);
 
   &__title {
     display: block;
     font-size: $font-size-huge;
     margin-bottom: padding-base(12);
+  }
+
+  &__display {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    .product-display {
+      flex: 1;
+      justify-content: space-between;
+    }
   }
 }

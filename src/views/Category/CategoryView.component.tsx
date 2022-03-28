@@ -54,7 +54,9 @@ class CategoryViewComponent extends React.Component<RoutedProps, CategoryViewSta
     return (
       <div className='category-view'>
         <span className='category-view__title'>{this.header}</span>
-        { this.renderContent() }
+        <div className='category-view__display'>
+          { this.renderContent() }
+        </div>
       </div>
     );
   }
