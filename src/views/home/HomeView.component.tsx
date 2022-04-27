@@ -4,12 +4,12 @@ import { categoryDataService } from '../../services/data/Category/CategoryData.s
 
 export default class HomeViewComponent extends React.Component {
   get firstCategory() {
-    return categoryDataService.value?.[0].name ?? '';
+    return categoryDataService.value?.[0]?.name ?? '500';
   }
 
   render() {
     return (
-      <Navigate to={`/category/${this.firstCategory}`} />
+      <Navigate to={`/${this.firstCategory}`} />
     );
   }
 }

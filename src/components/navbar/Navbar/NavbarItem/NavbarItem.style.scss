@@ -4,17 +4,28 @@
 .navbar-item {
   @include fixed-height(100%);
   padding: 0 padding-base(4);
-  cursor: pointer;
 
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
   color: $color-foreground;
+  cursor: pointer;
 
   &--active {
     color: $color-primary;
     font-weight: $font-weight-semi-bold;
     cursor: default;
+  }
+
+  &__title::after {
+    @include fixed-height(0);
+    content: attr(aria-label);
+    display: block;
+    font-weight: bold;
+    visibility: collapse;
+    color: transparent;
+    overflow: hidden;
+    visibility: hidden;
   }
 }

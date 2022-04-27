@@ -3,7 +3,7 @@ import { Link, Location } from 'react-router-dom';
 import { RoutedProps, withRouter } from '../../../utils/withRouter';
 import IconButtonComponent from '../../ui/IconButton/IconButton.component';
 import classNames from 'classnames';
-import { history } from '../../../AppRouter';
+import { history } from '../../app/AppRouter/AppRouter.component';
 
 import './CartButton.style.scss';
 import { ReactComponent as Cart } from '../../../assets/icons/cart.svg';

@@ -9,11 +9,11 @@
     cursor: pointer;
 
     &--disabled {
-      opacity: 0.5;
-      cursor: default;
+      color: $color-disabled;
     }
 
-    &--readonly {
+    &--readonly,
+    &--disabled {
       cursor: default;
     }
   }
@@ -31,13 +31,13 @@
     }
 
     &--readonly {
-      opacity: 0.5;
+      color: $color-disabled;
     }
   }
 
   &__value {
     &--placeholder {
-      opacity: 0.5;
+      color: $color-disabled;
     }
   }
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { ButtonComponent, ButtonProps } from '../Button/Button.component';
 import './IconButton.style.scss';
 
 export default class IconButtonComponent extends React.Component<IconButtonProps> {
@@ -12,12 +13,12 @@ export default class IconButtonComponent extends React.Component<IconButtonProps
   render() {
     const { icon, ...props } = this.props;
     return (
-      <button 
+      <ButtonComponent
         {...props}
         className={this.className}
       >
         {this.renderIcon()}
-      </button>
+      </ButtonComponent>
     );
   }
 
@@ -41,6 +42,6 @@ export default class IconButtonComponent extends React.Component<IconButtonProps
   }
 }
 
-export interface IconButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface IconButtonProps extends ButtonProps {
   icon: string | React.ReactElement<any>;
 }

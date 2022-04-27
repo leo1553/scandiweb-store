@@ -1,23 +1,23 @@
-import { createBrowserHistory, History, Update } from 'history';
+import { createBrowserHistory, Update } from 'history';
 import React from 'react';
 import { Router } from 'react-router-dom';
 
 export const history = createBrowserHistory();
 
-export default class AppRouter extends React.Component<AppRouterProps, Update> {
+export default class AppRouterComponent extends React.Component<AppRouterProps, Update> {
   private unlisten?: () => void;
 
   constructor(props: AppRouterProps) {
     super(props);
 
     this.state = {
-      action: props.history.action,
-      location: props.history.location
+      action: history.action,
+      location: history.location
     };
   }
 
   componentDidMount() {
-    this.unlisten = this.props.history.listen((update) => this.updateHistory(update));
+    this.unlisten = history.listen((update) => this.updateHistory(update));
   }
 
   componentWillUnmount() {
@@ -35,13 +35,12 @@ export default class AppRouter extends React.Component<AppRouterProps, Update> {
         {...this.props}
         location={this.state.location}
         navigationType={this.state.action}
-        navigator={this.props.history}
+        navigator={history}
       />
     );
   }
 }
 
 export interface AppRouterProps {
-  history: History;
   [x: string]: any;
 }

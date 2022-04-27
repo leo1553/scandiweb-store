@@ -1,0 +1,26 @@
+@import "src/styles";
+
+.app {
+  @include position-full(absolute);
+  display: flex;
+  flex-direction: column;
+
+  &__navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: $color-background;
+    z-index: $z-index-navbar;
+  }
+
+  &__view {
+    @include position-full(absolute);
+    display: flex;
+    flex-direction: column;
+    padding-top: space-base($size-navbar);
+  }
+
+  &__exception {
+    @include position-center(fixed);
+  }
+}

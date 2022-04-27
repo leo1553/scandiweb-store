@@ -1,23 +1,15 @@
+import classNames from 'classnames';
 import React, { createRef, RefObject} from 'react';
 import { Link } from 'react-router-dom';
 import './NavbarItem.style.scss';
 
-export default class NavbarItemComponent extends React.Component<NavbarItemProps, NavbarItemState> {
+export default class NavbarItemComponent extends React.Component<NavbarItemProps> {
   private anchorRef: RefObject<HTMLAnchorElement>;
 
   constructor(props: NavbarItemProps) {
     super(props);
 
     this.anchorRef = createRef();
-
-    this.state = {};
-  }
-
-  componentDidMount() {
-    const position = this.getPosition();
-    this.setState({
-      width: position.width * 1.05
-    });
   }
 
   getPosition(): NavbarItemPosition {
@@ -34,20 +26,28 @@ export default class NavbarItemComponent extends React.Component<NavbarItemProps
   }
 
   private get activeClassName() {
-    if(this.props.active)
-      return 'navbar-item--active';
-    return '';
+    return classNames(
+      'navbar-item',
+      {
+        'navbar-item--active': this.props.active
+      }
+    );
   }
 
   render() {
+    const title = this.props.title.toUpperCase();
     return (
       <Link
         to={this.props.path}
-        className={`navbar-item ${this.activeClassName}`}
+        className={this.activeClassName}
         ref={this.anchorRef}
-        style={{ minWidth: this.state.width }}
       >
-        {this.props.title.toUpperCase()}
+        <span
+          className='navbar-item__title'
+          aria-label={title}
+        >
+          {title}
+        </span>
       </Link>
     );
   }
@@ -57,10 +57,6 @@ export interface NavbarItemProps {
   title: string;
   path: string;
   active: boolean;
-}
-
-export interface NavbarItemState {
-  width?: number;
 }
 
 export interface NavbarItemPosition {

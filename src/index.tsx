@@ -1,17 +1,19 @@
 import { client } from '@tilework/opus';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import AppRouter, { history } from './AppRouter';
+import AppComponent from './components/app/App/App.component';
+import AppRouterComponent from './components/app/AppRouter/AppRouter.component';
 import reportWebVitals from './utils/reportWebVitals';
+
+import './styles/styles.scss';
 
 client.setEndpoint(process.env.REACT_APP_ENDPOINT!);
 
 ReactDOM.render(
   <React.StrictMode>
-    <AppRouter history={history}>
-      <App />
-    </AppRouter>
+    <AppRouterComponent>
+      <AppComponent />
+    </AppRouterComponent>
   </React.StrictMode>,
   document.getElementById('root')
 );

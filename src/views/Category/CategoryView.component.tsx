@@ -1,5 +1,7 @@
 import React from 'react';
-import ProductDisplayComponent from '../../components/display/ProductDisplay/ProductDisplay.component';
+import { Navigate } from 'react-router-dom';
+import ProductDisplayComponent from '../../components/product/ProductDisplay/ProductDisplay.component';
+import LoadingComponent from '../../components/ui/Loading/Loading.component';
 import { Product } from '../../models/Product.model';
 import { productDataService } from '../../services/data/Product/ProductData.service';
 import { capitalize } from '../../utils/capitalize';
@@ -54,19 +56,25 @@ class CategoryViewComponent extends React.Component<RoutedProps, CategoryViewSta
     return (
       <div className='category-view'>
         <span className='category-view__title'>{this.header}</span>
-        <div className='category-view__display'>
-          { this.renderContent() }
-        </div>
+        {this.renderState()}
       </div>
     );
   }
 
-  private renderContent() {
+  private renderState() {
     if(this.state.products === undefined)
       return this.renderLoading();
     if(this.state.products === null)
       return this.renderError();
-    return this.renderProducts();
+    return this.renderContent();
+  }
+
+  private renderContent() {
+    return (
+      <div className='category-view__display'>
+        { this.renderProducts() }
+      </div>
+    );
   }
 
   private renderProducts() {
@@ -76,11 +84,15 @@ class CategoryViewComponent extends React.Component<RoutedProps, CategoryViewSta
   }
 
   private renderLoading() {
-    return <div>Loading...</div>;
+    return (
+      <div className='category-view__loading'>
+        <LoadingComponent />
+      </div>
+    );
   }
 
   private renderError() {
-    return <div>Error</div>;
+    return <Navigate to='/404' />;
   }
 }
 

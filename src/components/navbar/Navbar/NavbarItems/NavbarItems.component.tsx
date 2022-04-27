@@ -1,6 +1,6 @@
 import React from 'react';
 import { Location } from 'react-router-dom';
-import { history } from '../../../../AppRouter';
+import { history } from '../../../app/AppRouter/AppRouter.component';
 import NavbarItemComponent from '../NavbarItem/NavbarItem.component';
 import NavbarSelectedIndicatorComponent from '../NavbarSelectedIndicator/NavbarSelectedIndicator.component';
 
@@ -52,7 +52,7 @@ export default class NavbarItemsComponent extends React.Component<NavbarItemsPro
 
   render() {
     return (
-      <div>
+      <div className='navbar-items'>
         { this.renderItems() }
         <NavbarSelectedIndicatorComponent position={this.state.position} width={this.state.width} />
       </div>

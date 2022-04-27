@@ -18,11 +18,12 @@ export class ProductDataService {
           )
           .addField('amount')
         )
+        .addField('brand')
       );
 
     return client.post(query).then(
       (data) => {
-        const result = data.category.products as Product[];
+        const result = data.category?.products as Product[] ?? null;
         return result;
       },
       () => {

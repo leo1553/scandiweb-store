@@ -1,14 +1,17 @@
 @import "./mixins.scss";
 @import "./variables.scss";
 
-* {
-  box-sizing: border-box;
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
 }
 
 body {
   @include font();
   color: $color-foreground;
   background-color: $color-background;
+  box-sizing: border-box;
 }
 
 *::placeholder {

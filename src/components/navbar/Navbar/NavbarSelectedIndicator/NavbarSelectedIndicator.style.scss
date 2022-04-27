@@ -4,11 +4,10 @@
 
 .navbar-selected-indicator {
   $height: space-base(2px);
-  $half-height: $height / 2;
 
   position: relative;
+  bottom: $height;
   height: $height;
-  bottom: $half-height;
   background-color: $color-primary;
 
   transition: left $animation-time-quick ease-in-out,

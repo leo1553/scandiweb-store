@@ -7,6 +7,8 @@ import { ReactComponent as Cart } from '../../../assets/icons/cart.svg';
 import './ProductCard.style.scss';
 import classNames from 'classnames';
 import ProductPriceComponent from '../ProductPrice/ProductPrice.component';
+import ImageComponent from '../../ui/Image/Image.component';
+import ProductNameComponent from '../ProductName/ProductName.component';
 
 export default class ProductCardComponent extends React.Component<ProductCardProps> {
   private get imageSource() {
@@ -31,11 +33,13 @@ export default class ProductCardComponent extends React.Component<ProductCardPro
       <CardComponent className='product-card__hover'>
         <div className={this.productCardClassName}>
           <div className='product-card__image-container'>
-            <img className='product-card__image' src={this.imageSource} />
+            <ImageComponent className='product-card__image' source={this.imageSource} />
             { this.renderOutOfStock() }
           </div>
           <div className='product-card__details'>
-            <div className='product-card__name'>{this.props.product.name}</div>
+            <div className='product-card__name'>
+              <ProductNameComponent product={this.props.product} />
+            </div>
             <span className='product-card__price'>
               <ProductPriceComponent prices={this.props.product.prices} />
             </span>

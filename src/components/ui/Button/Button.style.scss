@@ -1,0 +1,36 @@
+@import "src/styles";
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  margin: 0;
+  padding: padding-base(4) padding-base(8);
+  border: none;
+  background: unset;
+  color: unset;
+  user-select: none;
+
+  font-style: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  
+  &:disabled {
+    background: unset;
+    cursor: default;
+    color: $color-disabled;
+  }
+
+  &--primary {
+    background-color: $color-primary;
+    color: $color-on-primary;
+
+    &:disabled {
+      background-color: $color-disabled;
+      color: $color-on-disabled;
+    }
+  }
+}

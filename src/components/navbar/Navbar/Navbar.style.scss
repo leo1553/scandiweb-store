@@ -1,12 +1,10 @@
-@import "src/styles/functions";
-@import "src/styles/mixins";
-@import "src/styles/variables";
+@import "src/styles";
 
 .navbar {
-  @include fixed-height(space-base(80px));
+  @include fixed-height(space-base($size-navbar));
   padding: 0 padding-base($padding-page-base);
   display: flex;
-  z-index: 2;
+  z-index: $z-index-navbar;
 
   &__container {
     display: flex;
@@ -23,5 +21,6 @@
     width: $size;
     height: $size;
     align-self: center;
+    pointer-events: none;
   }
 }

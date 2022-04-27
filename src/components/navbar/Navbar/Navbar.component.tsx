@@ -23,7 +23,7 @@ export default class NavbarComponent extends React.Component<unknown, NavbarStat
     this.setState({
       paths: categories.map((category) => ({
         title: category.name,
-        path: `/category/${category.name.toLowerCase()}`
+        path: `/${category.name.toLowerCase()}`
       }))
     });
   }

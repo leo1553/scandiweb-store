@@ -2,31 +2,16 @@
 @import "src/styles/mixins";
 @import "src/styles/variables";
 
-.icon-button {
+.icon-button.button {
   $size: space-base(32px);
   @include fixed-height($size);
   @include fixed-width($size);
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  cursor: pointer;
-  margin: 0;
   padding: 0;
-  border: none;
-  background: unset;
-  color: unset;
 
   &__icon {
     $size: space-base(22px);
     @include fixed-height($size);
     @include fixed-width($size);
-  }
-
-  &:disabled {
-    background: unset;
-    cursor: default;
-    color: $color-disabled;
   }
 }

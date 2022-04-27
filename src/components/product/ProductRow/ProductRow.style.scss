@@ -3,6 +3,7 @@
 .product-row {
   display: inline-block;
 
+  // Used by ProductDisplayComponent to predict the required space
   &--with-margin {
     margin-left: margin-base(10);
   }

@@ -8,10 +8,7 @@
   &__rows {
     display: flex;
     flex-direction: column;
-
-    & > *:not(:first-child) {
-      margin-top: margin-base(10);
-    }
+    gap: margin-base(10);
   }
 
   &__paginator {
