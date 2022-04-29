@@ -1,5 +1,4 @@
-@import "src/styles/functions";
-@import "src/styles/mixins";
+@import "src/styles";
 
 .navbar-item {
   @include fixed-height(100%);
@@ -26,6 +25,5 @@
     visibility: collapse;
     color: transparent;
     overflow: hidden;
-    visibility: hidden;
   }
 }

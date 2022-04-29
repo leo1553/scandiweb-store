@@ -1,5 +1,4 @@
-@import "src/styles/functions";
-@import "src/styles/mixins";
+@import "src/styles";
 
 .paginator-dots {
   @include fixed-width(space-base(32px));

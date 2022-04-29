@@ -6,10 +6,10 @@ import ProductRowComponent from '../ProductRow/ProductRow.component';
 
 import './ProductDisplay.style.scss';
 
-export default class ProductDisplayComponent extends React.Component<ProductDisplayProps, ProductDisplayState> {
+export default class ProductDisplayComponent extends React.PureComponent<ProductDisplayProps, ProductDisplayState> {
   static readonly ROW_MARGIN = computeNumberStyle('product-row--with-margin', 'margin-left');
   static readonly CARD_PADDING = computeNumberStyle('card', 'padding');
-  static readonly CARD_SIZE = computeNumberStyle('product-card', 'width') + this.CARD_PADDING * 2;
+  static readonly CARD_SIZE = computeNumberStyle('product-card__content', 'width') + this.CARD_PADDING * 2;
 
   private unlisten?: () => void;
   private rootRef: React.RefObject<HTMLDivElement>;
@@ -78,15 +78,14 @@ export default class ProductDisplayComponent extends React.Component<ProductDisp
   }
 
   private renderRows() {
-    const rows = this.state.productsInPage.reduce(
-      (previous, current, index) => {
+    const rows: Product[][] = [];
+    this.state.productsInPage.forEach(
+      (current, index) => {
         const row = Math.floor(index / this.state.countPerRow);
-        if(!previous[row])
-          previous[row] = [];
-        previous[row].push(current);
-        return previous;
-      },
-      [] as Product[][]
+        if(!rows[row])
+          rows[row] = [];
+        rows[row].push(current);
+      }
     );
 
     return rows.map((row, index) => (

@@ -4,7 +4,7 @@ import SelectItemComponent from '../SelectItem/SelectItem.component';
 
 import './SelectItems.style.scss';
 
-export default class SelectItemsComponent extends React.Component<SelectItemsProps> {
+export default class SelectItemsComponent extends React.PureComponent<SelectItemsProps> {
   private onClick(event: React.MouseEvent) {
     event.stopPropagation();
   }

@@ -2,7 +2,7 @@ import React from 'react';
 import { ButtonComponent, ButtonProps } from '../Button/Button.component';
 import './IconButton.style.scss';
 
-export default class IconButtonComponent extends React.Component<IconButtonProps> {
+export default class IconButtonComponent extends React.PureComponent<IconButtonProps> {
   private get className() {
     const classes = ['icon-button'];
     if(this.props.className)

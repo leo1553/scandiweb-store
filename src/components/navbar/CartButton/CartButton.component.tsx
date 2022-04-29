@@ -8,7 +8,7 @@ import { history } from '../../app/AppRouter/AppRouter.component';
 import './CartButton.style.scss';
 import { ReactComponent as Cart } from '../../../assets/icons/cart.svg';
 
-class CartButtonComponent extends React.Component<RoutedProps, CartButtonState> {
+class CartButtonComponent extends React.PureComponent<RoutedProps, CartButtonState> {
   private unlisten?: () => void;
 
   constructor(props: RoutedProps) {

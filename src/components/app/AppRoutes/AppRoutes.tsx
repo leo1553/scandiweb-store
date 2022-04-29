@@ -6,7 +6,7 @@ import CategoryViewComponent from '../../../views/Category/CategoryView.componen
 import NotFoundViewComponent from '../../../views/NotFound/NotFoundView.component';
 import InternalErrorViewComponent from '../../../views/InternalError/InternalErrorView.component';
 
-export default class AppRoutesComponent extends React.Component {
+export default class AppRoutesComponent extends React.PureComponent {
   render() {
     return (
       <Routes>

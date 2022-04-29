@@ -1,7 +1,7 @@
 import React from 'react';
 import { Product } from '../../../models/Product.model';
 
-export default class ProductNameComponent extends React.Component<ProductNameProps> {
+export default class ProductNameComponent extends React.PureComponent<ProductNameProps> {
   render() {
     return `${this.props.product.brand} ${this.props.product.name}`;
   }

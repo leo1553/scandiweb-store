@@ -6,7 +6,7 @@ import NavbarItemsComponent, { NavbarItem } from './NavbarItems/NavbarItems.comp
 
 import './Navbar.style.scss';
 
-export default class NavbarComponent extends React.Component<unknown, NavbarState> {
+export default class NavbarComponent extends React.PureComponent<unknown, NavbarState> {
   private unlisten?: () => void;
 
   constructor(props: unknown) {

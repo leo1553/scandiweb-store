@@ -1,7 +1,7 @@
 import React from 'react';
 import './Overlay.style.scss';
 
-export default class OverlayComponent extends React.Component<OverlayProps> {
+export default class OverlayComponent extends React.PureComponent<OverlayProps> {
   static currentOverlayIndex = 1000;
 
   private overlayIndex = OverlayComponent.currentOverlayIndex++;

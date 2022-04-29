@@ -3,7 +3,7 @@ import React from 'react';
 
 import './Button.style.scss';
 
-export class ButtonComponent extends React.Component<ButtonProps> {
+export class ButtonComponent extends React.PureComponent<ButtonProps> {
   get className() {
     return classNames(
       'button',

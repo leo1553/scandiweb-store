@@ -3,7 +3,7 @@ import { Currency } from '../../../models/Currency.model';
 import { Price } from '../../../models/Product.model';
 import { currencyService } from '../../../services/Currency/Currency.service';
 
-export default class ProductPriceComponent extends React.Component<ProductPriceProps, ProductPriceState> {
+export default class ProductPriceComponent extends React.PureComponent<ProductPriceProps, ProductPriceState> {
   private unlisten?: () => void;
 
   constructor(props: ProductPriceProps) {

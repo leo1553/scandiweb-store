@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class OptionComponent extends React.Component<OptionProps> {
+export default class OptionComponent extends React.PureComponent<OptionProps> {
   render() {
     return this.props.children;
   }

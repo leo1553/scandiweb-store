@@ -4,7 +4,7 @@ import ProductCardComponent from '../ProductCard/ProductCard.component';
 
 import './ProductRow.style.scss';
 
-export default class ProductRowComponent extends React.Component<ProductRowProps> {
+export default class ProductRowComponent extends React.PureComponent<ProductRowProps> {
   render() {
     return (
       <div className='product-row'>

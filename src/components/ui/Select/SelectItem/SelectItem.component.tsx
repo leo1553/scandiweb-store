@@ -4,7 +4,7 @@ import { OptionProps } from '../../Option/Option.component';
 
 import './SelectItem.style.scss';
 
-export default class SelectItemComponent extends React.Component<SelectItemProps> {
+export default class SelectItemComponent extends React.PureComponent<SelectItemProps> {
   get disabled() {
     const child = this.props.children;
     return child && child.props.disabled;

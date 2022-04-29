@@ -2,7 +2,7 @@ import React from 'react';
 
 import './Card.style.scss';
 
-export default class CardComponent extends React.Component<CardProps> {
+export default class CardComponent extends React.PureComponent<CardProps> {
   get className() {
     const classes = ['card'];
     if(this.props.className)

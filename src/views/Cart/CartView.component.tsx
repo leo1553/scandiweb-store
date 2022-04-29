@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class CartViewComponent extends React.Component {
+export default class CartViewComponent extends React.PureComponent {
   render() {
     return (
       <div>

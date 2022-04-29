@@ -5,7 +5,7 @@ import PaginatorItemsComponent from './PaginatorItems/PaginatorItems.component';
 import './Paginator.style.scss';
 import { ControlProps } from '../../common/props/ControlProps';
 
-export default class PaginatorComponent extends React.Component<PaginatorProps, PaginatorState> {
+export default class PaginatorComponent extends React.PureComponent<PaginatorProps, PaginatorState> {
   static readonly DEFAULT_ITEMS_PER_PAGE = 10;
   
   constructor(props: PaginatorProps) {

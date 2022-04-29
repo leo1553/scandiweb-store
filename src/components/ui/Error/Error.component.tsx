@@ -3,7 +3,7 @@ import { ButtonComponent } from '../Button/Button.component';
 
 import './Error.style.scss';
 
-export default class ErrorComponent extends React.Component<ErrorProps> {
+export default class ErrorComponent extends React.PureComponent<ErrorProps> {
   get hasButtons() {
     return !!this.props.retry || !!this.props.goBack;
   }

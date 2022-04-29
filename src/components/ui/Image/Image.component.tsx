@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class ImageComponent extends React.Component<ImageProps> {
+export default class ImageComponent extends React.PureComponent<ImageProps> {
   render() {
     return (
       <div 

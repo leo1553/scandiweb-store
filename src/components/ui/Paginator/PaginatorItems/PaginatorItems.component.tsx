@@ -5,7 +5,7 @@ import PaginatorItemComponent from '../PaginatorItem/PaginatorItem.component';
 
 import './PaginatorItems.style.scss';
 
-export default class PaginatorItemsComponent extends React.Component<PaginatorItemsProps> {
+export default class PaginatorItemsComponent extends React.PureComponent<PaginatorItemsProps> {
   render() {
     return (
       <div className='paginator-items'>

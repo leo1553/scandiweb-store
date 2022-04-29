@@ -8,7 +8,7 @@ import './App.style.scss';
 import LoadingComponent from '../../ui/Loading/Loading.component';
 import ErrorComponent from '../../ui/Error/Error.component';
 
-export default class AppComponent extends React.Component<unknown, AppState> {
+export default class AppComponent extends React.PureComponent<unknown, AppState> {
   constructor(props: unknown) {
     super(props);
 

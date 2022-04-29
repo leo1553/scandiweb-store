@@ -4,7 +4,7 @@ import { Router } from 'react-router-dom';
 
 export const history = createBrowserHistory();
 
-export default class AppRouterComponent extends React.Component<AppRouterProps, Update> {
+export default class AppRouterComponent extends React.PureComponent<AppRouterProps, Update> {
   private unlisten?: () => void;
 
   constructor(props: AppRouterProps) {

@@ -3,7 +3,7 @@ import { OptionProps } from '../../Option/Option.component';
 import OverlayComponent from '../../Overlay/Overlay.component';
 import OverlayAnchorComponent from '../../Overlay/OverlayAnchor/OverlayAnchor.component';
 
-export default class SelectOverlayComponent extends React.Component<SelectOverlayProps> {
+export default class SelectOverlayComponent extends React.PureComponent<SelectOverlayProps> {
   private modifyStyle(ref: HTMLElement | null, style: React.CSSProperties) {
     if(ref) {
       const rect = ref.getBoundingClientRect();

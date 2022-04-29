@@ -4,7 +4,7 @@ import { history } from '../../../app/AppRouter/AppRouter.component';
 import NavbarItemComponent from '../NavbarItem/NavbarItem.component';
 import NavbarSelectedIndicatorComponent from '../NavbarSelectedIndicator/NavbarSelectedIndicator.component';
 
-export default class NavbarItemsComponent extends React.Component<NavbarItemsProps, NavbarItemsState> {
+export default class NavbarItemsComponent extends React.PureComponent<NavbarItemsProps, NavbarItemsState> {
   private unlisten?: () => void;
 
   constructor(props: NavbarItemsProps) {

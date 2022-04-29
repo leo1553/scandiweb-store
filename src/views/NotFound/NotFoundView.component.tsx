@@ -4,7 +4,7 @@ import { RoutedProps, withRouter } from '../../utils/withRouter';
 
 import './NotFoundView.style.scss';
 
-class NotFoundViewComponent extends React.Component<RoutedProps> {
+class NotFoundViewComponent extends React.PureComponent<RoutedProps> {
   handleClick() {
     this.props.navigate('/');
   }

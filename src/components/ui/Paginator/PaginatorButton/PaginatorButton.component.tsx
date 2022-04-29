@@ -3,7 +3,7 @@ import IconButtonComponent from '../../IconButton/IconButton.component';
 import { ReactComponent as ArrowLeft } from '../../../../assets/icons/arrow-left.svg';
 import { ReactComponent as ArrowRight } from '../../../../assets/icons/arrow-right.svg';
 
-export default class PaginatorButtonComponent extends React.Component<PaginatorButton> {
+export default class PaginatorButtonComponent extends React.PureComponent<PaginatorButton> {
   render() {
     return <IconButtonComponent icon={this.renderIcon()} onClick={this.props.onClick} disabled={this.props.disabled} />;
   }

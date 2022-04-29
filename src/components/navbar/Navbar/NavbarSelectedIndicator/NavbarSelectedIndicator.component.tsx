@@ -1,7 +1,7 @@
 import React from 'react';
 import './NavbarSelectedIndicator.style.scss';
 
-export default class NavbarSelectedIndicatorComponent extends React.Component<NavbarSelectedIndicatorProps> {
+export default class NavbarSelectedIndicatorComponent extends React.PureComponent<NavbarSelectedIndicatorProps> {
   constructor(props: NavbarSelectedIndicatorProps) {
     super(props);
   }

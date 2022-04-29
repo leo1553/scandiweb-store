@@ -10,7 +10,7 @@ import ProductPriceComponent from '../ProductPrice/ProductPrice.component';
 import ImageComponent from '../../ui/Image/Image.component';
 import ProductNameComponent from '../ProductName/ProductName.component';
 
-export default class ProductCardComponent extends React.Component<ProductCardProps> {
+export default class ProductCardComponent extends React.PureComponent<ProductCardProps> {
   private get imageSource() {
     return this.props.product.gallery?.[0] ?? '/img/product-image-placeholder.jpg';
   }
@@ -21,16 +21,16 @@ export default class ProductCardComponent extends React.Component<ProductCardPro
 
   private get productCardClassName() {
     return classNames(
-      'product-card',
+      'product-card__content',
       {
-        'product-card--out-of-stock': !this.inStock
+        'product-card__content--out-of-stock': !this.inStock
       }
     );
   }
 
   render() {
     return (
-      <CardComponent className='product-card__hover'>
+      <CardComponent className='product-card'>
         <div className={this.productCardClassName}>
           <div className='product-card__image-container'>
             <ImageComponent className='product-card__image' source={this.imageSource} />
@@ -58,11 +58,10 @@ export default class ProductCardComponent extends React.Component<ProductCardPro
 
   private renderFloatButton() {
     if(this.inStock) {
-      return (
-        <div className='product-card__float-button'>
-          <IconButtonComponent icon={<Cart />} />
-        </div>
-      );
+      return <IconButtonComponent 
+        className='product-card__float-button'
+        icon={<Cart />}
+        color='primary' />;
     }
   }
 }

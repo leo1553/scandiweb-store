@@ -8,7 +8,7 @@ import classNames from 'classnames';
 import SelectItemsComponent from './SelectItems/SelectItems.component';
 import { ControlProps } from '../../common/props/ControlProps';
 
-export default class SelectComponent extends React.Component<SelectProps, SelectState> {
+export default class SelectComponent extends React.PureComponent<SelectProps, SelectState> {
   private rootRef: RefObject<HTMLDivElement>;
 
   constructor(props: SelectProps) {

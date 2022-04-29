@@ -3,7 +3,7 @@ import ErrorComponent from '../../components/ui/Error/Error.component';
 import { RoutedProps, withRouter } from '../../utils/withRouter';
 import './InternalErrorView.style.scss';
 
-class InternalErrorViewComponent extends React.Component<RoutedProps> {
+class InternalErrorViewComponent extends React.PureComponent<RoutedProps> {
   handleClick() {
     this.props.navigate('/');
   }

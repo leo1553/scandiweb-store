@@ -8,7 +8,7 @@ import CurrencySelectorItemComponent from './CurrencySelectorItem/CurrencySelect
 import './CurrencySelector.style.scss';
 import { currencyService } from '../../../services/Currency/Currency.service';
 
-export default class CurrencySelectorComponent extends React.Component<unknown, CurrencySelectorState> {
+export default class CurrencySelectorComponent extends React.PureComponent<unknown, CurrencySelectorState> {
   private unlisten?: () => void;
 
   constructor(props: unknown) {

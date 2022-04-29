@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class OverlayAnchorComponent extends React.Component<OverlayAnchorProps, OverlayAnchorState> {
+export default class OverlayAnchorComponent extends React.PureComponent<OverlayAnchorProps, OverlayAnchorState> {
   private unlisten?: () => void;
 
   constructor(props: OverlayAnchorProps) {

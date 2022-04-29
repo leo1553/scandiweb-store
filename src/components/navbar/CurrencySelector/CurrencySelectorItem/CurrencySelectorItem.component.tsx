@@ -3,7 +3,7 @@ import { Currency } from '../../../../models/Currency.model';
 
 import './CurrencySelectorItem.style.scss';
 
-export default class CurrencySelectorItemComponent extends React.Component<CurrencySelectorItemProps> {
+export default class CurrencySelectorItemComponent extends React.PureComponent<CurrencySelectorItemProps> {
   render() {
     return (
       <div className='currency-selector-item'>

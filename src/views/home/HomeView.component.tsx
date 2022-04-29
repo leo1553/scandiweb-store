@@ -2,7 +2,7 @@ import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { categoryDataService } from '../../services/data/Category/CategoryData.service';
 
-export default class HomeViewComponent extends React.Component {
+export default class HomeViewComponent extends React.PureComponent {
   get firstCategory() {
     return categoryDataService.value?.[0]?.name ?? '500';
   }

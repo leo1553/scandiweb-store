@@ -3,10 +3,29 @@
 $size: space-base(356px);
 
 .product-card {
-  @include fixed-width($size);
-  display: flex;
-  flex-direction: column;
-  user-select: none;
+  position: relative;
+  box-shadow: $shadow-none;
+  transition: box-shadow $animation-time-quick ease-in-out;
+
+  &:hover {
+    box-shadow: $shadow-normal;
+    z-index: $z-index-product-card;
+
+    .product-card__float-button {
+      visibility: visible;
+    }
+  }
+
+  &__content {
+    @include fixed-width($size);
+    display: flex;
+    flex-direction: column;
+    user-select: none;
+    
+    &--out-of-stock {
+      opacity: 0.5;
+    }
+  }
 
   &__image-container {
     position: relative;
@@ -40,46 +59,17 @@ $size: space-base(356px);
   }
 
   &__float-button {
-    position: absolute;
-    top: 0;
-    right: margin-base(4);
-    transform: translateY(-50%);
-
     $size: space-base(52px);
-    width: $size;
-    height: $size;
+    @include fixed-size($size !important);
+
+    position: absolute;
+    top: -$size / 2;
+    right: margin-base(4);
+
     border-radius: 50%;
-    background-color: $color-primary;
     box-shadow: $shadow-small;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
     visibility: hidden;
-
-    svg {
-      color: $color-on-primary;
-    }
-  }
-
-  &__hover {
-    position: relative;
-    box-shadow: $shadow-none;
-    transition: box-shadow $animation-time-quick ease-in-out;
-
-    &:hover {
-      box-shadow: $shadow-normal;
-      z-index: $z-index-product-card;
-
-      .product-card__float-button {
-        visibility: visible;
-      }
-    }
-  }
-
-  &--out-of-stock {
-    opacity: 0.5;
   }
 
   &__out-of-stock {

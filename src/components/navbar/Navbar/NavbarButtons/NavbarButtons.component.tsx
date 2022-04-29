@@ -3,7 +3,7 @@ import './NavbarButtons.style.scss';
 import CurrencySelectorComponent from '../../CurrencySelector/CurrencySelector.component';
 import CartButtonComponent from '../../CartButton/CartButton.component';
 
-export default class NavbarButtonsComponent extends React.Component {
+export default class NavbarButtonsComponent extends React.PureComponent {
   render() {
     return (
       <div className='navbar-buttons'>

@@ -9,7 +9,7 @@ import { RoutedProps, withRouter } from '../../utils/withRouter';
 
 import './CategoryView.style.scss';
 
-class CategoryViewComponent extends React.Component<RoutedProps, CategoryViewState> {
+class CategoryViewComponent extends React.PureComponent<RoutedProps, CategoryViewState> {
   constructor(props: RoutedProps) {
     super(props);
 

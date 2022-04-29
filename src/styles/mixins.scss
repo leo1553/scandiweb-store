@@ -22,6 +22,11 @@
   max-width: $width;
 }
 
+@mixin fixed-size($width, $height: $width) {
+  @include fixed-width($width);
+  @include fixed-height($height);
+}
+
 @mixin box-shadow($shadow) {
   -webkit-box-shadow: $shadow;
   box-shadow: $shadow;

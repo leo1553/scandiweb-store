@@ -3,7 +3,7 @@ import React, { createRef, RefObject} from 'react';
 import { Link } from 'react-router-dom';
 import './NavbarItem.style.scss';
 
-export default class NavbarItemComponent extends React.Component<NavbarItemProps> {
+export default class NavbarItemComponent extends React.PureComponent<NavbarItemProps> {
   private anchorRef: RefObject<HTMLAnchorElement>;
 
   constructor(props: NavbarItemProps) {
