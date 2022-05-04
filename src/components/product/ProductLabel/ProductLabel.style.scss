@@ -1,0 +1,12 @@
+@import "src/styles";
+
+.product-label {
+  &__text {
+    font-size: $font-size-normal-large;
+    font-weight: $font-weight-bold;
+  }
+
+  &__content:not(:empty) {
+    margin-top: margin-base(2);
+  }
+}

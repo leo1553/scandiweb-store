@@ -6,6 +6,7 @@ $size: space-base(356px);
   position: relative;
   box-shadow: $shadow-none;
   transition: box-shadow $animation-time-quick ease-in-out;
+  cursor: pointer;
 
   &:hover {
     box-shadow: $shadow-normal;

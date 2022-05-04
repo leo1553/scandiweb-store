@@ -1,0 +1,24 @@
+@import "src/styles";
+
+.product {
+  &__name {
+    display: flex;
+    flex-direction: column;
+    font-size: $font-size-large-huge;
+    gap: margin-base(2);
+
+    .product-name__brand {
+      font-weight: $font-weight-semi-bold;
+    }
+  }
+
+  &__attributes,
+  &__price-container {
+    margin-top: margin-base(10);
+  }
+
+  &__price {
+    font-size: $font-size-large;
+    font-weight: $font-weight-bold;
+  }
+}

@@ -13,12 +13,12 @@
     margin-bottom: padding-base(12);
   }
 
-  &__display {
+  &__showcase {
     display: flex;
     flex-direction: column;
     flex: 1;
 
-    .product-display {
+    .product-showcase {
       flex: 1;
       justify-content: space-between;
     }

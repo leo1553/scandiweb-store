@@ -1,0 +1,10 @@
+@import "src/styles";
+
+.product-attribute {
+  .product-label__content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: margin-base(2);
+  }
+}

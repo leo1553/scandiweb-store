@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
-import ProductDisplayComponent from '../../components/product/ProductDisplay/ProductDisplay.component';
+import ProductShowcaseComponent from '../../components/product/ProductShowcase/ProductShowcase.component';
 import LoadingComponent from '../../components/ui/Loading/Loading.component';
 import { Product } from '../../models/Product.model';
 import { productDataService } from '../../services/data/Product/ProductData.service';
@@ -71,16 +71,14 @@ class CategoryViewComponent extends React.PureComponent<RoutedProps, CategoryVie
 
   private renderContent() {
     return (
-      <div className='category-view__display'>
+      <div className='category-view__showcase'>
         { this.renderProducts() }
       </div>
     );
   }
 
   private renderProducts() {
-    if(this.state.products) {
-      return <ProductDisplayComponent products={this.state.products} itemsPerPage={12} />;
-    }
+    return <ProductShowcaseComponent products={this.state.products!} itemsPerPage={12} />;
   }
 
   private renderLoading() {
@@ -92,7 +90,7 @@ class CategoryViewComponent extends React.PureComponent<RoutedProps, CategoryVie
   }
 
   private renderError() {
-    return <Navigate to='/404' />;
+    return <Navigate to='/404' replace={true} />;
   }
 }
 

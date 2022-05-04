@@ -2,11 +2,11 @@ import React from 'react';
 import { Product } from '../../../models/Product.model';
 import { computeNumberStyle } from '../../../utils/computeStyle';
 import PaginatorComponent from '../../ui/Paginator/Paginator.component';
-import ProductRowComponent from '../ProductRow/ProductRow.component';
+import ProductRowComponent from './ProductRow/ProductRow.component';
 
-import './ProductDisplay.style.scss';
+import './ProductShowcase.style.scss';
 
-export default class ProductDisplayComponent extends React.PureComponent<ProductDisplayProps, ProductDisplayState> {
+export default class ProductShowcaseComponent extends React.PureComponent<ProductShowcaseProps, ProductShowcaseState> {
   static readonly ROW_MARGIN = computeNumberStyle('product-row--with-margin', 'margin-left');
   static readonly CARD_PADDING = computeNumberStyle('card', 'padding');
   static readonly CARD_SIZE = computeNumberStyle('product-card__content', 'width') + this.CARD_PADDING * 2;
@@ -14,7 +14,7 @@ export default class ProductDisplayComponent extends React.PureComponent<Product
   private unlisten?: () => void;
   private rootRef: React.RefObject<HTMLDivElement>;
 
-  constructor(props: ProductDisplayProps) {
+  constructor(props: ProductShowcaseProps) {
     super(props);
 
     this.rootRef = React.createRef();
@@ -29,8 +29,8 @@ export default class ProductDisplayComponent extends React.PureComponent<Product
     const target = this.rootRef.current!;
     const maxWidth = target.getBoundingClientRect().width;
 
-    const fullCardSize = ProductDisplayComponent.CARD_SIZE + ProductDisplayComponent.ROW_MARGIN;
-    const count = 1 + Math.max(0, Math.floor((maxWidth - ProductDisplayComponent.CARD_SIZE) / fullCardSize));
+    const fullCardSize = ProductShowcaseComponent.CARD_SIZE + ProductShowcaseComponent.ROW_MARGIN;
+    const count = 1 + Math.max(0, Math.floor((maxWidth - ProductShowcaseComponent.CARD_SIZE) / fullCardSize));
 
     if(count != this.state.countPerRow) {
       this.setState({
@@ -61,12 +61,12 @@ export default class ProductDisplayComponent extends React.PureComponent<Product
     return (
       <div
         ref={this.rootRef}
-        className='product-display'
+        className='product-showcase'
       >
-        <div className='product-display__rows'>
+        <div className='product-showcase__rows'>
           {this.renderRows()}
         </div>
-        <div className='product-display__paginator'>
+        <div className='product-showcase__paginator'>
           <PaginatorComponent
             items={this.props.products.length}
             itemsPerPage={this.props.itemsPerPage}
@@ -94,12 +94,12 @@ export default class ProductDisplayComponent extends React.PureComponent<Product
   }
 }
 
-export interface ProductDisplayProps {
+export interface ProductShowcaseProps {
   products: Product[];
   itemsPerPage: number;
 }
 
-export interface ProductDisplayState {
+export interface ProductShowcaseState {
   productsInPage: Product[];
   countPerRow: number;
 }

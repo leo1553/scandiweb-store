@@ -1,0 +1,11 @@
+@import "src/styles";
+
+.product-attributes {
+  &--disabled {
+    opacity: .5;
+  }
+
+  &__attribute:not(:first-child) {
+    margin-top: margin-base(6);
+  }
+}

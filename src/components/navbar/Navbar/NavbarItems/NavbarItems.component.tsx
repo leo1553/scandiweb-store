@@ -1,11 +1,12 @@
 import React from 'react';
-import { Location } from 'react-router-dom';
+import { productDataService } from '../../../../services/data/Product/ProductData.service';
 import { history } from '../../../app/AppRouter/AppRouter.component';
 import NavbarItemComponent from '../NavbarItem/NavbarItem.component';
 import NavbarSelectedIndicatorComponent from '../NavbarSelectedIndicator/NavbarSelectedIndicator.component';
 
 export default class NavbarItemsComponent extends React.PureComponent<NavbarItemsProps, NavbarItemsState> {
   private unlisten?: () => void;
+  private unlistenCategory?: () => void;
 
   constructor(props: NavbarItemsProps) {
     super(props);
@@ -18,30 +19,41 @@ export default class NavbarItemsComponent extends React.PureComponent<NavbarItem
   }
 
   componentDidMount() {
-    this.unlisten = history.listen((update) => this.updateLocation(update.location));
-    setTimeout(() => this.updateLocation(history.location));
+    this.unlisten = history.listen((update) => this.updateLocation(update.location.pathname));
+    this.unlistenCategory = productDataService.currentProductCategory.listen(category => {
+      if(category)
+        this.updateLocation(`/${category}`);
+    });
+    setTimeout(() => this.updateLocation(history.location.pathname));
   }
 
   componentWillUnmount() {
     if(this.unlisten)
       this.unlisten();
+    if(this.unlistenCategory)
+      this.unlistenCategory();
   }
 
-  private updateLocation(location: Location) {
-    const activePath = this.props.paths.find(path => path.path === location.pathname);
+  private updateLocation(location: string) {
+    const activePath = this.props.paths.find(path => this.isSelected(path.path, location));
     const position = activePath?.ref?.getPosition() ?? { 
       position: this.state.position + (this.state.width * 0.5),
       width: 0
     };
 
     this.setState({
-      path: location.pathname,
+      path: location,
       ...position
     });
   }
 
+  private isSelected(path: string, current: string) {
+    return current === path
+      || (current.startsWith('/product/') && path === `/${productDataService.currentProductCategory.value}`);
+  }
+
   private isActiveClass(path: string) {
-    return this.state.path === path;
+    return this.isSelected(path, this.state.path);
   }
 
   private setRef(path: NavbarItemsPath) {

@@ -6,6 +6,13 @@
   display: flex;
   z-index: $z-index-navbar;
 
+  transition: box-shadow $animation-time-quick ease-in-out;
+  box-shadow: $shadow-none;
+  
+  &--shadow {
+    box-shadow: $shadow-normal;
+  }
+
   &__container {
     display: flex;
     flex: 1 1 0px;

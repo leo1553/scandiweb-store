@@ -1,5 +1,5 @@
 import React from 'react';
-import { Product } from '../../../models/Product.model';
+import { Product } from '../../../../models/Product.model';
 import ProductCardComponent from '../ProductCard/ProductCard.component';
 
 import './ProductRow.style.scss';

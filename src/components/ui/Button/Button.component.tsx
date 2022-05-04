@@ -27,6 +27,5 @@ export class ButtonComponent extends React.PureComponent<ButtonProps> {
 }
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  className?: string;
   color?: string;
 }

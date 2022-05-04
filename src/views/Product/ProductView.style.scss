@@ -1,0 +1,19 @@
+@import "src/styles";
+
+.product-view {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  padding: padding-base(16) padding-base($padding-page-base * 2) padding-base(16) padding-base($padding-page-base);
+
+  &__display {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  &__loading {
+    @include position-center(fixed);
+  }
+}
