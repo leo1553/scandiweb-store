@@ -1,0 +1,22 @@
+@import "src/styles";
+
+.progress-bar {
+  $height: space-base(8px);
+  $border-radius: $height * 0.5;
+
+  position: relative;
+  height: $height;
+  
+  background-color: $color-disabled;
+  border-radius: $border-radius;
+
+  &__bar {
+    position: absolute;
+    height: 100%;
+    
+    background-color: $color-primary;
+    border-radius: $border-radius;
+
+    transition: width $animation-time-quick ease-out;
+  }
+}
