@@ -10,6 +10,7 @@ jobs:
       - name: Install and Build
         run: |
           export DISABLE_ESLINT_PLUGIN=true
+          export PUBLIC_URL=/scandiweb-store
           npm i
           npm run build
 
