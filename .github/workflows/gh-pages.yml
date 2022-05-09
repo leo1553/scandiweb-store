@@ -9,6 +9,7 @@ jobs:
 
       - name: Install and Build
         run: |
+          export DISABLE_ESLINT_PLUGIN=true
           npm i
           npm run build
 
