@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import React from 'react';
 import { Product } from '../../../../models/Product.model';
 import CardComponent from '../../../ui/Card/Card.component';
@@ -8,12 +9,12 @@ import ImageComponent from '../../../ui/Image/Image.component';
 import ProductNameComponent from '../../ProductName/ProductName.component';
 
 import './ProductCard.style.scss';
-import classNames from 'classnames';
+import placeholder from '../../../../assets/img/product-image-placeholder.jpg';
 import { Link } from 'react-router-dom';
 
 export default class ProductCardComponent extends React.PureComponent<ProductCardProps> {
   private get imageSource() {
-    return this.props.product.gallery?.[0] ?? '/img/product-image-placeholder.jpg';
+    return this.props.product.gallery?.[0] ?? placeholder;
   }
 
   private get inStock() {
