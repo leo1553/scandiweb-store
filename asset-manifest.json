@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/scandiweb-store/static/css/main.63cdef75.css",
-    "main.js": "/scandiweb-store/static/js/main.da28470e.js",
+    "main.js": "/scandiweb-store/static/js/main.482ba28d.js",
     "static/js/787.42186139.chunk.js": "/scandiweb-store/static/js/787.42186139.chunk.js",
     "static/media/product-image-placeholder.jpg": "/scandiweb-store/static/media/product-image-placeholder.2218bee23ae79fd6d05b.jpg",
     "static/media/loading.svg": "/scandiweb-store/static/media/loading.2395214e84a7396a8bcb8c3d956eb27f.svg",
@@ -12,11 +12,11 @@
     "static/media/arrow-left.svg": "/scandiweb-store/static/media/arrow-left.2b49ddc65d69c8f8e0be36d4e8fb10e9.svg",
     "static/media/arrow-down.svg": "/scandiweb-store/static/media/arrow-down.978a2f36e243a2fc30ea0a65ed34ae1e.svg",
     "main.63cdef75.css.map": "/scandiweb-store/static/css/main.63cdef75.css.map",
-    "main.da28470e.js.map": "/scandiweb-store/static/js/main.da28470e.js.map",
+    "main.482ba28d.js.map": "/scandiweb-store/static/js/main.482ba28d.js.map",
     "787.42186139.chunk.js.map": "/scandiweb-store/static/js/787.42186139.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.63cdef75.css",
-    "static/js/main.da28470e.js"
+    "static/js/main.482ba28d.js"
   ]
 }
