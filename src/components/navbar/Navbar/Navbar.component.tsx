@@ -5,6 +5,7 @@ import NavbarButtonsComponent from './NavbarButtons/NavbarButtons.component';
 import NavbarItemsComponent, { NavbarItem } from './NavbarItems/NavbarItems.component';
 
 import './Navbar.style.scss';
+import logo from '../../../assets/img/logo.svg';
 import classNames from 'classnames';
 
 export default class NavbarComponent extends React.PureComponent<unknown, NavbarState> {
@@ -68,7 +69,7 @@ export default class NavbarComponent extends React.PureComponent<unknown, Navbar
         <div className='navbar__container'>
           <NavbarItemsComponent paths={this.state.paths} />
         </div>
-        <img className='navbar__logo' src='/img/logo.svg' />
+        <img className='navbar__logo' src={logo} />
         <div className='navbar__container navbar__container--right'>
           <NavbarButtonsComponent></NavbarButtonsComponent>
         </div>
