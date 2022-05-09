@@ -9,7 +9,6 @@ jobs:
 
       - name: Install and Build
         run: |
-          export REACT_APP_ENV=gh-pages
           export DISABLE_ESLINT_PLUGIN=true
           npm i
           npm run build
